@@ -3,7 +3,12 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const n8nUrl = 'https://n8n.srv1303475.hstgr.cloud/webhook/contacts-create';
+    const n8nUrl = process.env.N8N_WEBHOOK_URL;
+
+    if (!n8nUrl) {
+        console.error('Missing N8N_WEBHOOK_URL environment variable');
+        return res.status(500).json({ error: 'Server configuration error' });
+    }
 
     try {
         const response = await fetch(n8nUrl, {

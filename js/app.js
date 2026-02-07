@@ -94,41 +94,10 @@ function setupContactForm() {
         } catch (error) {
             console.error('API /api/submit failed:', error);
 
-            // FALLBACK for local 'npx serve' testing where /api doesn't exist.
-            // Warns in console but allows functionality testing.
-            console.warn('Falling back to direct N8N call (Warning: URL visible in network tab)');
-
-            try {
-                const directResponse = await fetch('https://n8n.srv1303475.hstgr.cloud/webhook/contacts-create', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (directResponse.ok) {
-                    if (formStatus) {
-                        const hasPhone = data.Phone && data.Phone.replace(/\D/g, '').length >= 10;
-                        formStatus.textContent = hasPhone
-                            ? 'Message received! We\'ll call you momentarily.'
-                            : 'Message sent successfully! We\'ll email you shortly.';
-                        formStatus.className = 'form-status success';
-                    }
-                    form.reset();
-                } else if (directResponse.status === 409) {
-                    if (formStatus) {
-                        formStatus.textContent = getDuplicateMessage();
-                        formStatus.className = 'form-status success';
-                    }
-                    form.reset();
-                } else {
-                    throw new Error('Direct fallback failed');
-                }
-            } catch (fallbackError) {
-                console.error('Fallback error:', fallbackError);
-                if (formStatus) {
-                    formStatus.textContent = 'Something went wrong. Please try again later.';
-                    formStatus.className = 'form-status error';
-                }
+            // Fallback removed for security. We do not want to expose the N8N URL to the client.
+            if (formStatus) {
+                formStatus.textContent = 'Something went wrong. Please try again later.';
+                formStatus.className = 'form-status error';
             }
         } finally {
             if (submitBtn) {
