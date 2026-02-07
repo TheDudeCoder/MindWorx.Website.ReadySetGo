@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindWorx | AI Automation That Removes Business Friction</title>
+    <meta name="description"
+        content="MindWorx helps small businesses uncover hidden operational friction and eliminate it with AI automation and voice agents. Dream It. Build It. Automate It.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* CSS Reset Fixes & Specific Overrides */
+        .hidden {
+            display: none;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: hsla(var(--background) / 0.8);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .section-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: hsl(var(--primary));
+            margin-bottom: 1rem;
+            display: inline-block;
+            border-bottom: 2px solid hsl(var(--primary));
+            padding-bottom: 0.25rem;
+        }
+
+        .scan-letter {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+            color: hsl(var(--muted));
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .z-10 {
+            z-index: 10;
+        }
+
+        .form-status {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-status.success {
+            color: #16a34a;
+        }
+
+        .form-status.error {
+            color: #dc2626;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container py-4 flex justify-between items-center" style="position: relative;">
+            <div class="logo">
+                <a href="#" class="flex items-center gap-2" style="text-decoration: none; color: inherit;">
+                    <i data-lucide="brain-circuit" style="color: hsl(var(--primary))"></i>
+                    <span style="font-weight: 700; font-size: 1.25rem;">MindWorx</span>
+                </a>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden" id="desktop-nav"
+                style="display: flex; gap: 2rem; align-items: center; position: absolute; left: 50%; transform: translateX(-50%);">
+                <a href="#situation" class="nav-link">The Challenge</a>
+                <a href="#analyze" class="nav-link">The Solution</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="btn btn-outline" aria-label="Toggle menu" style="display: none;">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-nav" class="hidden"
+            style="border-top: 1px solid hsl(var(--border)); background: hsl(var(--background)); padding: 1rem;">
+            <nav class="flex flex-col gap-4">
+                <a href="#situation" class="btn btn-outline" style="width: 100%;">The Challenge</a>
+                <a href="#analyze" class="btn btn-outline" style="width: 100%;">The Solution</a>
+                <a href="about.html" class="btn btn-outline" style="width: 100%;">About</a>
+                <a href="contact.html" class="btn btn-outline" style="width: 100%;">Contact</a>
+                <a href="#contact" class="btn btn-primary" style="width: 100%;">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="py-12 fade-in">
+            <div class="container">
+                <div class="grid" style="grid-template-columns: 3fr 2fr; gap: 4rem; align-items: center;">
+                    <!-- Left: Copy -->
+                    <div class="hero-content">
+                        <span class="section-title">MindWorx AI Automation</span>
+                        <h1 style="margin-bottom: 1.5rem;">AI Automation That Removes<br>Daily Business Friction</h1>
+                        <p class="lead" style="margin-bottom: 2rem;">
+                            We help small businesses uncover hidden operational friction — then design AI automation and
+                            AI voice agents that eliminate it.
+                        </p>
+                        <div style="margin-top: 2rem; margin-bottom: 3rem;">
+                            <p style="font-weight: 600; letter-spacing: 0.05em;">DREAM IT. BUILD IT. AUTOMATE IT.</p>
+                        </div>
+
+                        <!-- Hero Stats -->
+                        <div class="flex gap-4" style="border-top: 1px solid hsl(var(--border)); padding-top: 2rem;">
+                            <div style="flex: 1;">
+                                <div
+                                    style="font-size: 2.5rem; font-weight: 800; color: hsl(var(--primary)); line-height: 1;">
+                                    20h+</div>
+                                <div
+                                    style="font-size: 0.875rem; color: hsl(var(--muted-foreground)); margin-top: 0.25rem;">
+                                    Weekly Savings</div>
+                            </div>
+                            <div style="flex: 1; border-left: 1px solid hsl(var(--border)); padding-left: 1.5rem;">
+                                <div
+                                    style="font-size: 2.5rem; font-weight: 800; color: hsl(var(--primary)); line-height: 1;">
+                                    100%</div>
+                                <div
+                                    style="font-size: 0.875rem; color: hsl(var(--muted-foreground)); margin-top: 0.25rem;">
+                                    Lead Capture</div>
+                            </div>
+                            <div style="flex: 1; border-left: 1px solid hsl(var(--border)); padding-left: 1.5rem;">
+                                <div
+                                    style="font-size: 2.5rem; font-weight: 800; color: hsl(var(--primary)); line-height: 1;">
+                                    24/7</div>
+                                <div
+                                    style="font-size: 0.875rem; color: hsl(var(--muted-foreground)); margin-top: 0.25rem;">
+                                    Instant Response</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Contact Form -->
+                    <div class="card"
+                        style="box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
+                        <h3 style="margin-bottom: 1rem;">Let's Fix Your Friction</h3>
+                        <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Tell us what's slowing you down.</p>
+
+                        <form id="contact-form">
+                            <div class="form-group grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div>
+                                    <label class="label" for="name">Full Name *</label>
+                                    <input class="input" type="text" id="name" name="FullName" required
+                                        placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label class="label" for="zip">Zip Code *</label>
+                                    <input class="input" type="text" id="zip" name="Zip" required placeholder="12345">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label" for="friction_point">Biggest Friction Point *</label>
+                                <select class="input" id="friction_point" name="Subject" required>
+                                    <option value="" disabled selected>Select your biggest headache...</option>
+                                    <option value="Missed Calls">Missed calls / After-hours calls</option>
+                                    <option value="Manual Scheduling">Manual appointment scheduling</option>
+                                    <option value="Lead Follow-up">Endless lead follow-ups</option>
+                                    <option value="Data Entry">Manual data entry / Admin work</option>
+                                    <option value="Staffing Issues">Staff shortages / High turnover</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label">Contact Info (Enter at least one)</label>
+                                <div class="grid" style="gap: 0.5rem;">
+                                    <input class="input" type="email" id="email" name="Email"
+                                        placeholder="Email Address">
+                                    <input class="input" type="tel" id="phone" name="Phone" placeholder="Phone Number">
+                                </div>
+                            </div>
+
+                            <!-- Dynamic Urgent Toggle -->
+                            <div id="urgent-container" class="form-group hidden fade-in"
+                                style="background: hsl(var(--muted)); padding: 1rem; border-radius: var(--radius); border: 1px solid hsl(var(--primary) / 0.2);">
+                                <label class="flex items-center gap-3" style="cursor: pointer;">
+                                    <input type="checkbox" id="urgent" name="Urgent" value="yes"
+                                        style="width: 1.25rem; height: 1.25rem; accent-color: hsl(var(--primary));">
+                                    <span><strong>Want a demonstration now?</strong> I'll call you right back.</span>
+                                </label>
+                            </div>
+
+                            <button type="submit" id="submit-btn" class="btn btn-primary"
+                                style="width: 100%; margin-top: 1rem;">Let's Fix It</button>
+
+                            <div id="form-status" class="form-status"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- S - Situation -->
+        <section id="situation" class="py-24" style="background-color: hsl(var(--muted) / 0.3);">
+            <div class="container">
+                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                    <div>
+                        <div class="relative">
+                            <!-- <span class="scan-letter">S</span> -->
+                            <span class="section-title z-10">Current Reality</span>
+                        </div>
+                        <h2>Your Reality:<br>Constant Interruptions</h2>
+                        <p>Running a small business means constant interruptions. Missed calls. Manual scheduling.
+                            Endless follow-ups. Processes that break after hours or when staff is stretched thin.</p>
+                        <p><strong>We start by understanding your day.</strong> Where does work slow down? Where do
+                            things break under pressure?</p>
+                        <p>Through real conversations, call transcripts, and workflow analysis, we capture the current
+                            state before proposing any solution.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="flex items-center gap-2"><i data-lucide="activity"></i> Common Symptoms</h3>
+                        <ul style="padding-left: 1.5rem; color: hsl(var(--muted-foreground));">
+                            <li>Missed calls during peak hours</li>
+                            <li>Lead details lost on sticky notes</li>
+                            <li>"I'll call you back" (but forgetting to)</li>
+                            <li>Manual data entry into spreadsheets</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- C - Categorize -->
+        <section class="py-24">
+            <div class="container">
+                <div class="text-center" style="max-width: 800px; margin: 0 auto 4rem auto;">
+                    <div class="relative">
+                        <!-- <span class="scan-letter" style="left: 50%; transform: translateX(-50%);">C</span> -->
+                        <span class="section-title z-10">Break It Down</span>
+                    </div>
+                    <h2>Not All Pain is the Same</h2>
+                    <p>We categorize friction into what it affects most, keeping the focus on what improves first when
+                        the problem is solved.</p>
+                </div>
+
+                <div class="scan-cards">
+                    <div class="card">
+                        <div class="scan-card-icon"><i data-lucide="dollar-sign"></i></div>
+                        <h3>Financial</h3>
+                        <p>Lost revenue, missed leads, wasted spend, and billing friction.</p>
+                    </div>
+                    <div class="card">
+                        <div class="scan-card-icon"><i data-lucide="clock"></i></div>
+                        <h3>Productivity</h3>
+                        <p>Time sinks, interruptions, manual work, and slow handoffs.</p>
+                    </div>
+                    <div class="card">
+                        <div class="scan-card-icon"><i data-lucide="git-merge"></i></div>
+                        <h3>Process</h3>
+                        <p>Confusing steps, broken workflows, and duplicated effort.</p>
+                    </div>
+                    <div class="card">
+                        <div class="scan-card-icon"><i data-lucide="life-buoy"></i></div>
+                        <h3>Support</h3>
+                        <p>Missed calls, slow responses, and poor customer experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- A - Analyze -->
+        <section id="analyze" class="py-24" style="background-color: #1a1a1a; color: #ffffff;">
+            <div class="container">
+                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+                    <div>
+                        <div class="relative">
+                            <!-- <span class="scan-letter" style="color: rgba(255,255,255,0.1);">A</span> -->
+                            <span class="section-title z-10" style="color: white; border-color: white;">Deep
+                                Analysis</span>
+                        </div>
+                        <h2 style="color: white;">Root Causes,<br>Not Just Symptoms</h2>
+                        <p style="color: rgba(255,255,255,0.8);">We look for repetitive tasks, manual handoffs, and
+                            single points of failure. If a problem happens often, costs time, and breaks when people are
+                            busy — it’s a strong automation candidate.</p>
+                        <p style="color: rgba(255,255,255,0.8);">That’s where AI and voice automation deliver real ROI.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="card"
+                            style="background-color: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: white;">
+                            <h3>The Result?</h3>
+                            <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem;">Your customers call after
+                                hours. Your AI voice agent answers, qualifies the caller, books the appointment, logs
+                                the details, and sends confirmations — automatically.</p>
+                            <p style="font-weight: 600;">You wake up to booked meetings instead of missed opportunities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- N - Notify / Contact -->
+        <section id="contact" class="py-24">
+            <div class="container">
+                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                    <div>
+                        <div class="relative">
+                            <!-- <span class="scan-letter">N</span> -->
+                            <span class="section-title z-10">Next Steps</span>
+                        </div>
+                        <h2>Ready to Automate?</h2>
+                        <p>We’ll use our proven process to uncover your biggest friction points and show you exactly
+                            where automation can help.</p>
+
+                        <div style="margin-top: 2rem;">
+                            <h3 class="flex items-center gap-2"><i data-lucide="check-circle"></i> What You Get</h3>
+                            <ul
+                                style="list-style: none; padding: 0; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <li class="flex items-center gap-2"><i data-lucide="check"
+                                        style="width: 16px; color: hsl(var(--primary));"></i> A short problem summary
+                                </li>
+                                <li class="flex items-center gap-2"><i data-lucide="check"
+                                        style="width: 16px; color: hsl(var(--primary));"></i> Evidence and impact
+                                    analysis</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check"
+                                        style="width: 16px; color: hsl(var(--primary));"></i> Recommended automation
+                                    approach</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check"
+                                        style="width: 16px; color: hsl(var(--primary));"></i> Clear next steps</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card" style="text-align: center; background-color: hsl(var(--muted)); border: none;">
+                        <h3 style="margin-bottom: 1rem;">Still Have Questions?</h3>
+                        <p style="margin-bottom: 2rem;">Our AI Concierge is standing by to answer your calls and explain
+                            how we can help your business.</p>
+                        <a href="contact.html" class="btn btn-primary btn-lg">Engage With Us --></a>
+                        <p style="margin-top: 1rem; font-size: 0.9rem;">Or call us at <strong>(678) 866-0977</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background-color: hsl(var(--muted)); padding: 4rem 0;">
+        <div class="container text-center">
+            <div class="flex items-center justify-center gap-2"
+                style="margin-bottom: 1.5rem; color: hsl(var(--muted-foreground));">
+                <i data-lucide="brain-circuit"></i>
+                <span style="font-weight: 700;">MindWorx</span>
+            </div>
+            <p>&copy; 2026 MindWorx. Dream It. Build It. Automate It.</p>
+        </div>
+    </footer>
+
+    <!-- Init Icons -->
+    <script>
+        lucide.createIcons();
+
+        // Simple media query handling for mobile menu visibility in JS if needed
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const desktopNav = document.getElementById('desktop-nav');
+
+        function handleResize() {
+            if (window.innerWidth < 768) {
+                mobileMenuBtn.style.display = 'inline-flex';
+                desktopNav.style.display = 'none';
+            } else {
+                mobileMenuBtn.style.display = 'none';
+                desktopNav.style.display = 'flex';
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Init
+    </script>
+
+    <!-- App Logic -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About MindWorx | A Revolution in Business Solutions</title>
+    <meta name="description"
+        content="MindWorx is an enterprise run by IT professionals passionate about transforming the way businesses operate. Dream It. Build It. Automate It.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Shared Styles (Copied from index.html) */
+        .hidden {
+            display: none;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: hsla(var(--background) / 0.8);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .section-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: hsl(var(--primary));
+            margin-bottom: 1rem;
+            display: inline-block;
+            border-bottom: 2px solid hsl(var(--primary));
+            padding-bottom: 0.25rem;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .z-10 {
+            z-index: 10;
+        }
+
+        /* About Page Specific Styles */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container py-4 flex justify-between items-center" style="position: relative;">
+            <div class="logo">
+                <a href="index.html" class="flex items-center gap-2" style="text-decoration: none; color: inherit;">
+                    <i data-lucide="brain-circuit" style="color: hsl(var(--primary))"></i>
+                    <span style="font-weight: 700; font-size: 1.25rem;">MindWorx</span>
+                </a>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden" id="desktop-nav"
+                style="display: flex; gap: 2rem; align-items: center; position: absolute; left: 50%; transform: translateX(-50%);">
+                <a href="index.html#situation" class="nav-link">The Challenge</a>
+                <a href="index.html#analyze" class="nav-link">The Solution</a>
+                <a href="about.html" class="nav-link" style="color: hsl(var(--primary));">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="btn btn-outline" aria-label="Toggle menu" style="display: none;">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-nav" class="hidden"
+            style="border-top: 1px solid hsl(var(--border)); background: hsl(var(--background)); padding: 1rem;">
+            <nav class="flex flex-col gap-4">
+                <a href="index.html#situation" class="nav-link">The Challenge</a>
+                <a href="index.html#analyze" class="nav-link">The Solution</a>
+                <a href="about.html" class="nav-link" style="color: hsl(var(--primary));">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="index.html#contact" class="btn btn-primary" style="width: 100%;">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Intro Section -->
+        <section class="py-12 fade-in">
+            <div class="container">
+                <div class="text-center" style="max-width: 900px; margin: 0 auto;">
+                    <span class="section-title">Welcome to MindWorx</span>
+                    <h1 style="margin-bottom: 1.5rem;">A Revolution in<br>Business Solutions</h1>
+                    <p class="lead">
+                        At the pinnacle of our organization stands <strong>MindWorx</strong>—an enterprise run by IT
+                        professionals who are passionate about transforming the way businesses operate. Our mission is
+                        simple yet profound: <strong>to make an impact</strong>.
+                    </p>
+                    <p>
+                        We are laser-focused on assembling the brightest minds in the industry—people with vision,
+                        creativity, and the tenacity to overcome challenges. Collaboration and teamwork are not just
+                        values; they are the lifeblood of our company.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Model -->
+        <section class="py-24" style="background-color: hsl(var(--muted) / 0.3);">
+            <div class="container">
+                <div class="relative mb-8">
+                    <span class="section-title z-10">Our Model</span>
+                </div>
+                <h2>Our Unique Business Model</h2>
+
+                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;">
+                    <!-- DreamWorx -->
+                    <div class="card">
+                        <h3>DreamWorx <span style="font-size: 0.8em; opacity: 0.7; font-weight: 400;">— The
+                                Visionaries</span></h3>
+                        <p>At the forefront of MindWorx is <strong>DreamWorx</strong>, the face of our organization and
+                            the first point of contact for our clients.</p>
+                        <p>The DreamWorx team meets with business leaders to understand their challenges, concerns, and
+                            aspirations—then shares a clear, compelling vision of what’s possible.</p>
+                        <p class="mb-0">They don’t just listen—they <strong>inspire</strong>. By partnering closely with
+                            clients, DreamWorx fosters an environment of trust where dreams become actionable plans.</p>
+                    </div>
+
+                    <!-- HyperWorx -->
+                    <div class="card">
+                        <h3>HyperWorx <span style="font-size: 0.8em; opacity: 0.7; font-weight: 400;">— The
+                                Innovators</span></h3>
+                        <p>Once ideas and challenges are gathered, <strong>HyperWorx</strong> steps in.</p>
+                        <p>This team specializes in building <strong>Proof of Concepts (POCs)</strong> that bring ideas
+                            to life. These early-stage solutions provide tangible demonstrations, allowing clients to
+                            experience their vision in action.</p>
+                        <p class="mb-0">HyperWorx operates with speed and precision, using reusable foundations to
+                            deliver high-value POCs that spark excitement and validate direction.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specialty Teams -->
+        <section class="py-24">
+            <div class="container">
+                <div class="text-center" style="max-width: 800px; margin: 0 auto 4rem auto;">
+                    <span class="section-title">Specialty Teams</span>
+                    <h2>Turning Concepts Into Reality</h2>
+                    <p>Once DreamWorx and HyperWorx have laid the foundation, our <strong>specialty teams</strong> take
+                        over. These teams are industry-focused experts who transform refined POCs into fully realized,
+                        production-ready solutions.</p>
+                </div>
+
+                <div class="team-grid">
+                    <div class="card">
+                        <div style="color: hsl(var(--primary)); margin-bottom: 1rem;"><i data-lucide="users"></i></div>
+                        <h3>CommunityWorx</h3>
+                        <p>Focused on empowering communities with AI solutions that enhance public services, foster
+                            meaningful connections, and improve quality of life—from smart cities to local support
+                            systems.</p>
+                    </div>
+                    <div class="card">
+                        <div style="color: hsl(var(--primary)); margin-bottom: 1rem;"><i data-lucide="heart-pulse"></i>
+                        </div>
+                        <h3>HealthWorx</h3>
+                        <p>Reimagining healthcare through AI-driven solutions, focusing on improving patient care,
+                            operational efficiency, and medical innovation to deliver better outcomes.</p>
+                    </div>
+                    <div class="card">
+                        <div style="color: hsl(var(--primary)); margin-bottom: 1rem;"><i data-lucide="shield"></i></div>
+                        <h3>HeroicWorx</h3>
+                        <p>Dedicated to supporting first responders—police, fire, military, and EMT services—delivering
+                            AI solutions that enhance operational efficiency and ensure safety.</p>
+                    </div>
+                    <div class="card">
+                        <div style="color: hsl(var(--primary)); margin-bottom: 1rem;"><i
+                                data-lucide="graduation-cap"></i></div>
+                        <h3>SchoolWorx</h3>
+                        <p>Transforming education with AI-powered tools for personalized learning, curriculum
+                            development, and administrative efficiency.</p>
+                    </div>
+                    <div class="card">
+                        <div style="color: hsl(var(--primary)); margin-bottom: 1rem;"><i data-lucide="droplets"></i>
+                        </div>
+                        <h3>WaterWorx</h3>
+                        <p>Specializing in water utilities, developing intelligent solutions for distribution
+                            optimization, leak detection, sustainability, and infrastructure resilience.</p>
+                    </div>
+                    <div class="card">
+                        <div style="color: hsl(var(--primary)); margin-bottom: 1rem;"><i data-lucide="trophy"></i></div>
+                        <h3>TeamWorx</h3>
+                        <p>Focused on sports and athletics, leveling the playing field for athletes and organizations by
+                            delivering AI-driven solutions that enhance performance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Culture & Growth -->
+        <section class="py-24" style="background-color: #1a1a1a; color: #ffffff;">
+            <div class="container">
+                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                    <div>
+                        <span class="section-title" style="color: white; border-color: white;">Our Culture</span>
+                        <h2 style="color: white; margin-bottom: 1.5rem;">Collaboration at Our Core</h2>
+                        <p style="color: rgba(255,255,255,0.8);">At MindWorx, collaboration isn’t confined to individual
+                            teams—it’s the driving force behind everything we do. Ideas, tools, and best practices flow
+                            freely across divisions, creating a culture of shared knowledge and continuous improvement.
+                        </p>
+
+                        <div style="margin-top: 2rem;">
+                            <h3 style="color: white; font-size: 1.25rem;">We Believe In:</h3>
+                            <ul style="color: rgba(255,255,255,0.8); margin-top: 1rem;">
+                                <li style="margin-bottom: 0.5rem"><strong>Professional Development:</strong> Continuous
+                                    learning and skill-building.</li>
+                                <li style="margin-bottom: 0.5rem"><strong>Shared Rewards:</strong> Success is a team
+                                    effort, and everyone shares in the results.</li>
+                                <li><strong>Empowered Innovation:</strong> Creativity and bold thinking are encouraged.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card"
+                        style="background-color: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: white; text-align: center;">
+                        <h2 style="color: white;">Come Dream With Us</h2>
+                        <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem;">
+                            MindWorx is more than a company—it’s a community of innovators, dreamers, and doers. We’re
+                            building the ultimate team to tackle today’s challenges.
+                        </p>
+                        <p style="font-size: 1.25rem; font-weight: 700; margin-bottom: 2rem;">
+                            Dream It. Build It. Innovate It.
+                        </p>
+                        <a href="index.html#contact" class="btn btn-primary"
+                            style="background-color: white; color: #1a1a1a; border: none;">Work With Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background-color: hsl(var(--muted)); padding: 4rem 0;">
+        <div class="container text-center">
+            <div class="flex items-center justify-center gap-2"
+                style="margin-bottom: 1.5rem; color: hsl(var(--muted-foreground));">
+                <i data-lucide="brain-circuit"></i>
+                <span style="font-weight: 700;">MindWorx</span>
+            </div>
+            <p>&copy; 2026 MindWorx. Dream It. Build It. Automate It.</p>
+        </div>
+    </footer>
+
+    <!-- Init Icons -->
+    <script>
+        lucide.createIcons();
+
+        // Simple media query handling for mobile menu visibility in JS if needed
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const desktopNav = document.getElementById('desktop-nav');
+
+        function handleResize() {
+            if (window.innerWidth < 768) {
+                mobileMenuBtn.style.display = 'inline-flex';
+                desktopNav.style.display = 'none';
+            } else {
+                mobileMenuBtn.style.display = 'none';
+                desktopNav.style.display = 'flex';
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Init
+
+        // Mobile Menu Toggle Logic (Inline for simplicity)
+        const mobileNav = document.getElementById('mobile-nav');
+        if (mobileMenuBtn && mobileNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+                mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+                mobileNav.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+
+</html>
