@@ -62,11 +62,12 @@
     </style>
 </head>
 
-<body>
+<body class="dotted-bg relative">
+    <div class="gradient-radial"></div>
 
     <!-- Header -->
     <header>
-        <div class="container py-4 flex justify-between items-center" style="position: relative;">
+        <div class="container py-6 flex justify-between items-center" style="position: relative;">
             <div class="logo">
                 <a href="index.html" class="flex items-center gap-2" style="text-decoration: none; color: inherit;">
                     <i data-lucide="brain-circuit" style="color: hsl(var(--primary))"></i>
@@ -77,8 +78,7 @@
             <!-- Desktop Nav -->
             <nav class="hidden" id="desktop-nav"
                 style="display: flex; gap: 2rem; align-items: center; position: absolute; left: 50%; transform: translateX(-50%);">
-                <a href="index.html#situation" class="nav-link">The Challenge</a>
-                <a href="index.html#analyze" class="nav-link">The Solution</a>
+                <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="contact.html" class="nav-link" style="color: hsl(var(--primary));">Contact</a>
             </nav>
@@ -93,10 +93,10 @@
         <div id="mobile-nav" class="hidden"
             style="border-top: 1px solid hsl(var(--border)); background: hsl(var(--background)); padding: 1rem;">
             <nav class="flex flex-col gap-4">
-                <a href="index.html#situation" class="nav-link">The Challenge</a>
-                <a href="index.html#analyze" class="nav-link">The Solution</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="contact.html" class="nav-link" style="color: hsl(var(--primary));">Contact</a>
+                <a href="index.html" class="btn btn-outline" style="width: 100%;">Home</a>
+                <a href="about.html" class="btn btn-outline" style="width: 100%;">About</a>
+                <a href="contact.html" class="btn btn-outline"
+                    style="width: 100%; color: hsl(var(--primary));">Contact</a>
             </nav>
         </div>
     </header>
@@ -109,9 +109,10 @@
                     <!-- Left: Engaging Text -->
                     <div>
                         <span class="section-title">Get In Touch</span>
+                        <span class="section-title">Get In Touch</span>
                         <h1 style="margin-bottom: 1.5rem; line-height: 1.2;">
-                            Dream it.<br>
-                            Build it.<br>
+                            <span class="gradient-text">Dream it.</span><br>
+                            <span class="gradient-text">Build it.</span><br>
                             <span style="color: hsl(var(--primary) / 0.6);">Automate it.</span>
                         </h1>
                         <p class="lead" style="margin-bottom: 2rem;">
@@ -126,7 +127,7 @@
                         <div style="margin-top: 3rem; display: flex; gap: 2rem; color: hsl(var(--muted-foreground));">
                             <div class="flex items-center gap-2">
                                 <i data-lucide="mail"></i>
-                                <span>info@mindworx.com</span>
+                                <span>mindworxai@gmail.com</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i data-lucide="phone"></i>
@@ -136,8 +137,7 @@
                     </div>
 
                     <!-- Right: Contact Form (Copied from index.html) -->
-                    <div class="card"
-                        style="box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
+                    <div class="card glass-card" style="box-shadow: 0 0 30px hsl(var(--glow-primary) / 0.1);">
                         <h3 style="margin-bottom: 1rem;">Let's Fix Your Friction</h3>
                         <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Tell us what's slowing you down.</p>
 
@@ -181,8 +181,10 @@
                                 style="background: hsl(var(--muted)); padding: 1rem; border-radius: var(--radius); border: 1px solid hsl(var(--primary) / 0.2);">
                                 <label class="flex items-center gap-3" style="cursor: pointer;">
                                     <input type="checkbox" id="urgent" name="Urgent" value="yes"
-                                        style="width: 1.25rem; height: 1.25rem; accent-color: hsl(var(--primary));">
-                                    <span><strong>Want a demonstration now?</strong> I'll call you right back.</span>
+                                        style="width: 0.85rem; height: 0.85rem; accent-color: hsl(var(--primary)); flex-shrink: 0;">
+                                    <span style="font-size: 0.85rem; line-height: 1.2;"><strong>&nbsp;Want a
+                                            demonstration
+                                            now?</strong> I'll call you right back.</span>
                                 </label>
                             </div>
 

@@ -64,11 +64,12 @@
     </style>
 </head>
 
-<body>
+<body class="dotted-bg relative">
+    <div class="gradient-radial"></div>
 
     <!-- Header -->
     <header>
-        <div class="container py-4 flex justify-between items-center" style="position: relative;">
+        <div class="container py-6 flex justify-between items-center" style="position: relative;">
             <div class="logo">
                 <a href="index.html" class="flex items-center gap-2" style="text-decoration: none; color: inherit;">
                     <i data-lucide="brain-circuit" style="color: hsl(var(--primary))"></i>
@@ -79,8 +80,7 @@
             <!-- Desktop Nav -->
             <nav class="hidden" id="desktop-nav"
                 style="display: flex; gap: 2rem; align-items: center; position: absolute; left: 50%; transform: translateX(-50%);">
-                <a href="index.html#situation" class="nav-link">The Challenge</a>
-                <a href="index.html#analyze" class="nav-link">The Solution</a>
+                <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link" style="color: hsl(var(--primary));">About</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
@@ -95,11 +95,10 @@
         <div id="mobile-nav" class="hidden"
             style="border-top: 1px solid hsl(var(--border)); background: hsl(var(--background)); padding: 1rem;">
             <nav class="flex flex-col gap-4">
-                <a href="index.html#situation" class="nav-link">The Challenge</a>
-                <a href="index.html#analyze" class="nav-link">The Solution</a>
-                <a href="about.html" class="nav-link" style="color: hsl(var(--primary));">About</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <a href="index.html#contact" class="btn btn-primary" style="width: 100%;">Get Started</a>
+                <a href="index.html" class="btn btn-outline" style="width: 100%;">Home</a>
+                <a href="about.html" class="btn btn-outline" style="width: 100%; color: hsl(var(--primary));">About</a>
+                <a href="contact.html" class="btn btn-outline" style="width: 100%;">Contact</a>
+                <a href="contact.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
             </nav>
         </div>
     </header>
@@ -110,7 +109,7 @@
             <div class="container">
                 <div class="text-center" style="max-width: 900px; margin: 0 auto;">
                     <span class="section-title">Welcome to MindWorx</span>
-                    <h1 style="margin-bottom: 1.5rem;">A Revolution in<br>Business Solutions</h1>
+                    <h1 class="gradient-text" style="margin-bottom: 1.5rem;">A Revolution in<br>Business Solutions</h1>
                     <p class="lead">
                         At the pinnacle of our organization stands <strong>MindWorx</strong>—an enterprise run by IT
                         professionals who are passionate about transforming the way businesses operate. Our mission is
@@ -218,20 +217,20 @@
         </section>
 
         <!-- Culture & Growth -->
-        <section class="py-24" style="background-color: #1a1a1a; color: #ffffff;">
+        <section class="py-24">
             <div class="container">
                 <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
                     <div>
-                        <span class="section-title" style="color: white; border-color: white;">Our Culture</span>
-                        <h2 style="color: white; margin-bottom: 1.5rem;">Collaboration at Our Core</h2>
-                        <p style="color: rgba(255,255,255,0.8);">At MindWorx, collaboration isn’t confined to individual
+                        <span class="section-title">Our Culture</span>
+                        <h2 class="gradient-text" style="margin-bottom: 1.5rem;">Collaboration at Our Core</h2>
+                        <p>At MindWorx, collaboration isn’t confined to individual
                             teams—it’s the driving force behind everything we do. Ideas, tools, and best practices flow
                             freely across divisions, creating a culture of shared knowledge and continuous improvement.
                         </p>
 
                         <div style="margin-top: 2rem;">
-                            <h3 style="color: white; font-size: 1.25rem;">We Believe In:</h3>
-                            <ul style="color: rgba(255,255,255,0.8); margin-top: 1rem;">
+                            <h3 style="font-size: 1.25rem;">We Believe In:</h3>
+                            <ul style="margin-top: 1rem; color: hsl(var(--muted-foreground));">
                                 <li style="margin-bottom: 0.5rem"><strong>Professional Development:</strong> Continuous
                                     learning and skill-building.</li>
                                 <li style="margin-bottom: 0.5rem"><strong>Shared Rewards:</strong> Success is a team
@@ -241,18 +240,17 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="card"
-                        style="background-color: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: white; text-align: center;">
-                        <h2 style="color: white;">Come Dream With Us</h2>
-                        <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem;">
-                            MindWorx is more than a company—it’s a community of innovators, dreamers, and doers. We’re
-                            building the ultimate team to tackle today’s challenges.
+                    <div class="card glass-card"
+                        style="text-align: center; box-shadow: 0 0 30px hsl(var(--glow-primary) / 0.1);">
+                        <h2>Work Less. Grow More.</h2>
+                        <p style="margin-bottom: 2rem;">
+                            MindWorx is more than a company—it’s a community of innovators, dreamers, and doers. We’ve
+                            got the ultimate team to tackle today’s challenges.
                         </p>
-                        <p style="font-size: 1.25rem; font-weight: 700; margin-bottom: 2rem;">
+                        <p class="gradient-text" style="font-size: 1.25rem; font-weight: 700; margin-bottom: 2rem;">
                             Dream It. Build It. Innovate It.
                         </p>
-                        <a href="index.html#contact" class="btn btn-primary"
-                            style="background-color: white; color: #1a1a1a; border: none;">Work With Us</a>
+                        <a href="contact.html" class="btn btn-primary">Get Started</a>
                     </div>
                 </div>
             </div>

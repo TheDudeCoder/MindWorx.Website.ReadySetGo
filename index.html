@@ -82,11 +82,12 @@
     </style>
 </head>
 
-<body>
+<body class="dotted-bg relative">
+    <div class="gradient-radial"></div>
 
     <!-- Header -->
     <header>
-        <div class="container py-4 flex justify-between items-center" style="position: relative;">
+        <div class="container py-6 flex justify-between items-center" style="position: relative;">
             <div class="logo">
                 <a href="#" class="flex items-center gap-2" style="text-decoration: none; color: inherit;">
                     <i data-lucide="brain-circuit" style="color: hsl(var(--primary))"></i>
@@ -97,8 +98,7 @@
             <!-- Desktop Nav -->
             <nav class="hidden" id="desktop-nav"
                 style="display: flex; gap: 2rem; align-items: center; position: absolute; left: 50%; transform: translateX(-50%);">
-                <a href="#situation" class="nav-link">The Challenge</a>
-                <a href="#analyze" class="nav-link">The Solution</a>
+                <a href="index.html" class="nav-link" style="color: hsl(var(--primary));">Home</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
@@ -113,11 +113,10 @@
         <div id="mobile-nav" class="hidden"
             style="border-top: 1px solid hsl(var(--border)); background: hsl(var(--background)); padding: 1rem;">
             <nav class="flex flex-col gap-4">
-                <a href="#situation" class="btn btn-outline" style="width: 100%;">The Challenge</a>
-                <a href="#analyze" class="btn btn-outline" style="width: 100%;">The Solution</a>
+                <a href="index.html" class="btn btn-outline" style="width: 100%; color: hsl(var(--primary));">Home</a>
                 <a href="about.html" class="btn btn-outline" style="width: 100%;">About</a>
                 <a href="contact.html" class="btn btn-outline" style="width: 100%;">Contact</a>
-                <a href="#contact" class="btn btn-primary" style="width: 100%;">Get Started</a>
+                <a href="contact.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
             </nav>
         </div>
     </header>
@@ -130,7 +129,8 @@
                     <!-- Left: Copy -->
                     <div class="hero-content">
                         <span class="section-title">MindWorx AI Automation</span>
-                        <h1 style="margin-bottom: 1.5rem;">AI Automation That Removes<br>Daily Business Friction</h1>
+                        <h1 class="gradient-text" style="margin-bottom: 1.5rem;">AI Automation That Removes<br>Daily
+                            Business Friction</h1>
                         <p class="lead" style="margin-bottom: 2rem;">
                             We help small businesses uncover hidden operational friction — then design AI automation and
                             AI voice agents that eliminate it.
@@ -169,8 +169,7 @@
                     </div>
 
                     <!-- Right: Contact Form -->
-                    <div class="card"
-                        style="box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
+                    <div class="card glass-card" style="box-shadow: 0 0 30px hsl(var(--glow-primary) / 0.1);">
                         <h3 style="margin-bottom: 1rem;">Let's Fix Your Friction</h3>
                         <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Tell us what's slowing you down.</p>
 
@@ -214,8 +213,10 @@
                                 style="background: hsl(var(--muted)); padding: 1rem; border-radius: var(--radius); border: 1px solid hsl(var(--primary) / 0.2);">
                                 <label class="flex items-center gap-3" style="cursor: pointer;">
                                     <input type="checkbox" id="urgent" name="Urgent" value="yes"
-                                        style="width: 1.25rem; height: 1.25rem; accent-color: hsl(var(--primary));">
-                                    <span><strong>Want a demonstration now?</strong> I'll call you right back.</span>
+                                        style="width: 0.85rem; height: 0.85rem; accent-color: hsl(var(--primary)); flex-shrink: 0;">
+                                    <span style="font-size: 0.85rem; line-height: 1.2;"><strong>&nbsp;Want a
+                                            demonstration
+                                            now?</strong> I'll call you right back.</span>
                                 </label>
                             </div>
 
@@ -249,10 +250,12 @@
                     <div class="card">
                         <h3 class="flex items-center gap-2"><i data-lucide="activity"></i> Common Symptoms</h3>
                         <ul style="padding-left: 1.5rem; color: hsl(var(--muted-foreground));">
-                            <li>Missed calls during peak hours</li>
-                            <li>Lead details lost on sticky notes</li>
-                            <li>"I'll call you back" (but forgetting to)</li>
-                            <li>Manual data entry into spreadsheets</li>
+                            <li>Missed calls that turn into lost revenue</li>
+                            <li>Scrambling to capture lead details</li>
+                            <li>Follow-ups that happen too late (or not at all)</li>
+                            <li>Too much time spent on manual data entry</li>
+                            <li>The phone constantly pulling you away from real work</li>
+                            <li>Processes that break when things get busy</li>
                         </ul>
                     </div>
                 </div>
@@ -298,30 +301,30 @@
         </section>
 
         <!-- A - Analyze -->
-        <section id="analyze" class="py-24" style="background-color: #1a1a1a; color: #ffffff;">
+        <section id="analyze" class="py-24" style="background-color: hsl(var(--muted) / 0.3);">
             <div class="container">
-                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
                     <div>
                         <div class="relative">
                             <!-- <span class="scan-letter" style="color: rgba(255,255,255,0.1);">A</span> -->
-                            <span class="section-title z-10" style="color: white; border-color: white;">Deep
+                            <span class="section-title z-10">Deep
                                 Analysis</span>
                         </div>
-                        <h2 style="color: white;">Root Causes,<br>Not Just Symptoms</h2>
-                        <p style="color: rgba(255,255,255,0.8);">We look for repetitive tasks, manual handoffs, and
+                        <h2 class="gradient-text">Root Causes,<br>Not Just Symptoms</h2>
+                        <p>We look for repetitive tasks, manual handoffs, and
                             single points of failure. If a problem happens often, costs time, and breaks when people are
                             busy — it’s a strong automation candidate.</p>
-                        <p style="color: rgba(255,255,255,0.8);">That’s where AI and voice automation deliver real ROI.
+                        <p>That’s where AI and voice automation deliver real ROI.
                         </p>
                     </div>
                     <div>
-                        <div class="card"
-                            style="background-color: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: white;">
+                        <div class="card glass-card" style="box-shadow: 0 0 30px hsl(var(--glow-primary) / 0.1);">
                             <h3>The Result?</h3>
-                            <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem;">Your customers call after
+                            <p style="margin-bottom: 2rem;">Your customers call after
                                 hours. Your AI voice agent answers, qualifies the caller, books the appointment, logs
                                 the details, and sends confirmations — automatically.</p>
-                            <p style="font-weight: 600;">You wake up to booked meetings instead of missed opportunities.
+                            <p style="font-weight: 600; color: hsl(var(--primary));">You wake up to booked meetings
+                                instead of missed opportunities.
                             </p>
                         </div>
                     </div>
@@ -365,7 +368,7 @@
                         <h3 style="margin-bottom: 1rem;">Still Have Questions?</h3>
                         <p style="margin-bottom: 2rem;">Our AI Concierge is standing by to answer your calls and explain
                             how we can help your business.</p>
-                        <a href="contact.html" class="btn btn-primary btn-lg">Engage With Us --></a>
+                        <a href="contact.html" class="btn btn-primary btn-lg">Get Started</a>
                         <p style="margin-top: 1rem; font-size: 0.9rem;">Or call us at <strong>(678) 866-0977</strong>
                         </p>
                     </div>

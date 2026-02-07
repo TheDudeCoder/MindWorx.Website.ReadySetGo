@@ -109,8 +109,8 @@ function setupContactForm() {
                     if (formStatus) {
                         const hasPhone = data.Phone && data.Phone.replace(/\D/g, '').length >= 10;
                         formStatus.textContent = hasPhone
-                            ? 'Message sent successfully! (Dev Mode)'
-                            : 'Message sent successfully! We\'ll email you shortly. (Dev Mode)';
+                            ? 'Message received! We\'ll call you momentarily.'
+                            : 'Message sent successfully! We\'ll email you shortly.';
                         formStatus.className = 'form-status success';
                     }
                     form.reset();

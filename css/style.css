@@ -1,54 +1,44 @@
 /* Modern CSS Reset & Variables */
 :root {
-    /* Shadcn-like Color Palette (Zinc/Slate) */
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-    --radius: 0.5rem;
+    /* MindWorx Dark Green Futuristic Design System */
+    --background: 160 30% 4%;
+    --foreground: 150 20% 95%;
+
+    --card: 160 25% 8%;
+    --card-foreground: 150 20% 95%;
+
+    --popover: 160 25% 8%;
+    --popover-foreground: 150 20% 95%;
+
+    --primary: 158 64% 52%;
+    --primary-foreground: 160 30% 4%;
+
+    --secondary: 160 25% 15%;
+    --secondary-foreground: 150 20% 95%;
+
+    --muted: 160 20% 15%;
+    --muted-foreground: 155 15% 55%;
+
+    --accent: 158 64% 52%;
+    --accent-foreground: 160 30% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 150 20% 95%;
+
+    --border: 160 20% 18%;
+    --input: 160 20% 18%;
+    --ring: 158 64% 52%;
+
+    --radius: 0.75rem;
+
+    /* Custom MindWorx tokens */
+    --glow-primary: 158 64% 52%;
+    --glow-secondary: 160 40% 40%;
+    --gradient-start: 158 64% 52%;
+    --gradient-end: 160 40% 35%;
 
     /* Font Families */
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-}
-
-/* Dark Mode Support (System Preference) */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: 240 10% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 240 10% 3.9%;
-        --card-foreground: 0 0% 98%;
-        --popover: 240 10% 3.9%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 240 5.9% 10%;
-        --secondary: 240 3.7% 15.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 240 3.7% 15.9%;
-        --muted-foreground: 240 5% 64.9%;
-        --accent: 240 3.7% 15.9%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 240 3.7% 15.9%;
-        --input: 240 3.7% 15.9%;
-        --ring: 240 4.9% 83.9%;
-    }
 }
 
 * {
@@ -111,6 +101,16 @@ body {
     padding-bottom: 3rem;
 }
 
+.py-6 {
+    padding-top: .8rem;
+    padding-bottom: .8rem;
+}
+
+.py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
 .py-24 {
     padding-top: 6rem;
     padding-bottom: 6rem;
@@ -168,14 +168,15 @@ p {
 /* Nav Links */
 .nav-link {
     text-decoration: none;
-    color: hsl(var(--muted-foreground));
+    color: hsl(var(--foreground) / 0.8);
     font-weight: 500;
-    font-size: 0.875rem;
-    transition: color 0.2s;
+    font-size: .9rem;
+    transition: all 0.2s;
 }
 
 .nav-link:hover {
     color: hsl(var(--primary));
+    text-shadow: 0 0 10px hsl(var(--glow-primary) / 0.5);
 }
 
 /* Buttons */
@@ -302,4 +303,53 @@ p {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Custom Design Effects (Ported) */
+.gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(158 64% 70%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    /* Fallback */
+}
+
+.glow-primary {
+    box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.3),
+        0 0 40px hsl(var(--glow-primary) / 0.15),
+        inset 0 0 20px hsl(var(--glow-primary) / 0.05);
+}
+
+.glass {
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--border) / 0.5);
+}
+
+.glass-card {
+    background: linear-gradient(135deg, hsl(160 25% 10% / 0.8), hsl(160 25% 6% / 0.9));
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--border) / 0.6);
+}
+
+.dotted-bg {
+    background-image: radial-gradient(circle, hsl(var(--primary) / 0.15) 1px, transparent 1px);
+    background-size: 24px 24px;
+    min-height: 100vh;
+}
+
+.gradient-radial {
+    background: radial-gradient(ellipse at 50% 0%, hsl(var(--primary) / 0.15) 0%, transparent 60%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
 }
