@@ -53,13 +53,13 @@ function setupContactForm() {
         const payload = {
             operation: "create",
             data: {
-                FullName: data.FullName,
-                Phone: (data.Phone || "").replace(/\D/g, ''), // Send digits only
-                Email: data.Email || "",
-                Zip: data.Zip,
-                Subject: data.Subject,
-                Status: data.Urgent ? "Urgent" : "New",
-                Notes: "Submitted from MindWorx.ai website."
+                full_name: data.FullName,
+                phone: (data.Phone || "").replace(/\D/g, ''), // Send digits only
+                email: data.Email || "",
+                zip: data.Zip,
+                subject: data.Subject,
+                status: data.Urgent ? "Urgent" : "New",
+                notes: "Submitted from MindWorx.ai website."
             }
         };
 
