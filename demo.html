@@ -298,6 +298,37 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* --- Word Fade Loading Animation --- */
+        .word-fade-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+        }
+
+        .word-fade-container .word {
+            position: absolute;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .word-fade-container .word.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .word-fade-container .word.fading-out {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
     </style>
 </head>
 
@@ -323,16 +354,11 @@
                 <div class="hero-grid">
                     <!-- Left: Dynamic Content -->
                     <div class="hero-content">
-                        <!-- Loading skeleton -->
-                        <div id="hero-loading">
-                            <div class="skeleton skeleton-headline"></div>
-                            <div class="skeleton skeleton-subheadline"></div>
-                            <div class="skeleton skeleton-line" style="width: 95%;"></div>
-                            <div class="skeleton skeleton-line" style="width: 88%;"></div>
-                            <div class="skeleton skeleton-line" style="width: 70%;"></div>
-                            <div style="height: 1rem;"></div>
-                            <div class="skeleton skeleton-line" style="width: 92%;"></div>
-                            <div class="skeleton skeleton-line" style="width: 85%;"></div>
+                        <!-- Word fade loading animation -->
+                        <div id="hero-loading" class="word-fade-container" style="position: relative;">
+                            <span class="word" data-index="0">Practical.</span>
+                            <span class="word" data-index="1">Honest.</span>
+                            <span class="word" data-index="2">Grounded.</span>
                         </div>
 
                         <!-- Dynamic content (hidden until loaded) -->
@@ -567,7 +593,58 @@
             setupPhoneFormat();
             loadCampaignContent();
             setupDemoForm();
+            startWordFadeAnimation();
         });
+
+        // --- Word Fade Loading Animation ---
+        function startWordFadeAnimation() {
+            const words = document.querySelectorAll('.word-fade-container .word');
+            if (!words.length) return;
+
+            // If content loaded from cache instantly, skip animation
+            if (contentReady) {
+                animationComplete = true;
+                revealContent();
+                return;
+            }
+
+            let currentIndex = 0;
+            const fadeInDuration = 600;   // ms to fade in
+            const holdDuration = 800;     // ms to hold visible
+            const fadeOutDuration = 600;  // ms to fade out
+            const pauseBetween = 200;     // ms pause between words
+
+            function showNextWord() {
+                if (currentIndex >= words.length) {
+                    // Animation complete — reveal content if ready, or mark complete
+                    animationComplete = true;
+                    if (contentReady) {
+                        revealContent();
+                    }
+                    return;
+                }
+
+                const word = words[currentIndex];
+
+                // Fade in
+                word.classList.add('visible');
+
+                setTimeout(() => {
+                    // Fade out
+                    word.classList.remove('visible');
+                    word.classList.add('fading-out');
+
+                    setTimeout(() => {
+                        word.classList.remove('fading-out');
+                        currentIndex++;
+                        setTimeout(showNextWord, pauseBetween);
+                    }, fadeOutDuration);
+                }, fadeInDuration + holdDuration);
+            }
+
+            // Small initial delay before starting
+            setTimeout(showNextWord, 300);
+        }
 
         // --- Extract campaign_id and UTM params from URL ---
         function captureParams() {
@@ -683,6 +760,10 @@
         }
 
         // --- Render AI-Generated Content ---
+        let contentReady = false;
+        let pendingContent = null;
+        let animationComplete = false;
+
         function renderContent(content) {
             // Hero
             document.getElementById('hero-headline').textContent = content.headline || 'Your Business Deserves Better';
@@ -694,7 +775,17 @@
                 document.getElementById('reassurance-text').textContent = content.reassurance_text;
             }
 
-            // Show hero content, hide skeleton
+            contentReady = true;
+            pendingContent = content;
+
+            // If animation already finished, show immediately
+            if (animationComplete) {
+                revealContent();
+            }
+            // Otherwise, revealContent will be called when animation completes
+        }
+
+        function revealContent() {
             document.getElementById('hero-loading').style.display = 'none';
             const heroContent = document.getElementById('hero-content');
             heroContent.style.display = '';
