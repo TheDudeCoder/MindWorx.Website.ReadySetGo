@@ -3,10 +3,16 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const n8nUrl = process.env.N8N_WEBHOOK_URL;
+    // Prefer N8N_WEBHOOK_BASE_URL (future-proof), fall back to N8N_WEBHOOK_URL (legacy)
+    const baseUrl = process.env.N8N_WEBHOOK_BASE_URL;
+    const legacyUrl = process.env.N8N_WEBHOOK_URL;
+
+    const n8nUrl = baseUrl
+        ? `${baseUrl}/webhook/contacts-create`
+        : legacyUrl;
 
     if (!n8nUrl) {
-        console.error('Missing N8N_WEBHOOK_URL environment variable');
+        console.error('Missing N8N_WEBHOOK_BASE_URL or N8N_WEBHOOK_URL environment variable');
         return res.status(500).json({ error: 'Server configuration error' });
     }
 
@@ -20,7 +26,6 @@ export default async function handler(req, res) {
         });
 
         if (!response.ok) {
-            // Log error
             console.error(`N8N responded with ${response.status}`);
             return res.status(response.status).json({ error: 'N8N error' });
         }
