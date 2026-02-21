@@ -430,7 +430,7 @@
 
                                 <button type="submit" id="demo-submit-btn" class="btn btn-primary btn-lg"
                                     style="width: 100%; margin-top: 0.5rem;">
-                                    Experience It!
+                                    Let's Connect
                                 </button>
 
                                 <div id="demo-form-status" class="form-status"></div>
@@ -612,7 +612,7 @@
                             if (checkbox) checkbox.checked = false;
                             // Reset button text
                             const submitBtn = document.getElementById('demo-submit-btn');
-                            if (submitBtn) submitBtn.textContent = 'Experience It!';
+                            if (submitBtn) submitBtn.textContent = 'Let\'s Connect';
                         }
                     }
                 });
@@ -625,7 +625,7 @@
                 urgentCheckbox.addEventListener('change', (e) => {
                     submitBtn.textContent = e.target.checked
                         ? 'Get Live Demonstration'
-                        : 'Experience It!';
+                        : 'Let\'s Connect';
                 });
             }
         }
@@ -809,7 +809,7 @@
                 } finally {
                     if (submitBtn) {
                         submitBtn.disabled = false;
-                        submitBtn.textContent = 'Experience It!';
+                        submitBtn.textContent = 'Let\'s Connect';
                     }
                 }
             });
