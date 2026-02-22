@@ -119,6 +119,36 @@
             flex-shrink: 0;
         }
 
+        /* ── Hero closing statement ── */
+        .hero-closing {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid hsl(var(--border) / 0.4);
+        }
+
+        .hero-closing p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-closing .emphasis-line {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: hsl(var(--foreground));
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .hero-closing .cta-line {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: hsl(var(--primary));
+            margin-top: 1rem;
+        }
+
         /* ── Divider ── */
         .section-divider {
             width: 80px;
@@ -421,6 +451,7 @@
             <nav class="hidden" id="desktop-nav"
                 style="display: flex; gap: 2rem; align-items: center; position: absolute; left: 50%; transform: translateX(-50%);">
                 <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link" style="color: hsl(var(--primary));">About</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
 
@@ -435,6 +466,7 @@
             style="border-top: 1px solid hsl(var(--border)); background: hsl(var(--background)); padding: 1rem;">
             <nav class="flex flex-col gap-4">
                 <a href="index.html" class="btn btn-outline" style="width: 100%;">Home</a>
+                <a href="about.html" class="btn btn-outline" style="width: 100%; color: hsl(var(--primary));">About</a>
                 <a href="contact.html" class="btn btn-outline" style="width: 100%;">Contact</a>
                 <a href="contact.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
             </nav>
@@ -466,17 +498,22 @@
                     <ul class="friction-list">
                         <li><i data-lucide="phone-missed" style="width: 16px; height: 16px;"></i> Missed calls</li>
                         <li><i data-lucide="reply" style="width: 16px; height: 16px;"></i> Follow-ups</li>
-                        <li><i data-lucide="calendar-clock" style="width: 16px; height: 16px;"></i> Scheduling back &
+                        <li><i data-lucide="calendar-clock" style="width: 16px; height: 16px;"></i> Scheduling back
+                            &amp;
                             forth</li>
                         <li><i data-lucide="clipboard-list" style="width: 16px; height: 16px;"></i> Admin tasks that
-                            never end</li>
+                            never seem to end</li>
                     </ul>
 
-                    <p style="font-size: 1.15rem; line-height: 1.8; color: hsl(var(--muted-foreground));">
-                        That's not a motivation problem. It's not a work ethic problem.<br>
-                        <strong style="color: hsl(var(--primary)); font-size: 1.2rem;">It's a systems
-                            problem.</strong>
-                    </p>
+                    <div class="hero-closing">
+                        <p>That is not a motivation problem. It is not a work ethic problem.</p>
+                        <p class="emphasis-line">The problem is not how hard you work.</p>
+                        <p class="emphasis-line" style="color: hsl(var(--primary));">The problem is the work has nowhere
+                            else to go.</p>
+                        <p class="cta-line">It does not have to stay that way.</p>
+                        <a href="contact.html" class="btn btn-primary btn-lg"
+                            style="margin-top: 2rem; display: inline-flex;">Let's Connect</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -489,11 +526,11 @@
                 <div class="pain-grid">
                     <div class="reveal">
                         <span class="section-title">The Reality</span>
-                        <h2>Most small business owners aren't looking for technology.</h2>
+                        <h2>Most small business owners are not looking for technology.</h2>
                         <hr class="section-divider">
                         <p style="font-size: 1.1rem; line-height: 1.8;">
-                            You don't need another complicated tool. You don't need a full-time hire just to answer
-                            phones. You don't need a complete overhaul of how you operate.
+                            You do not need another complicated tool. You do not need a full-time hire just to answer
+                            phones. You do not need a complete overhaul of how you operate.
                         </p>
                         <p style="font-size: 1.15rem; line-height: 1.8;">
                             <strong style="color: hsl(var(--foreground));">You need practical systems that quietly
@@ -506,7 +543,7 @@
                             style="box-shadow: 0 0 30px hsl(var(--glow-primary) / 0.08); padding: 2rem;">
                             <h3 class="flex items-center gap-2" style="margin-bottom: 1.5rem;">
                                 <i data-lucide="search" style="color: hsl(var(--primary));"></i>
-                                They're looking for...
+                                They are looking for...
                             </h3>
 
                             <div class="pain-item">
@@ -567,19 +604,19 @@
                 <div class="better-way-grid">
                     <div class="reveal">
                         <span class="section-title">A Better Way</span>
-                        <h2>Most owners don't wake up thinking about AI.</h2>
+                        <h2>Most owners do not wake up thinking about AI.</h2>
                         <hr class="section-divider">
                         <p style="font-size: 1.1rem; line-height: 1.8;">
                             They wake up thinking about doing the job. <strong
-                                style="color: hsl(var(--foreground));">That's the problem we're choosing to work
+                                style="color: hsl(var(--foreground));">That is the problem we are choosing to work
                                 on.</strong>
                         </p>
                         <p style="font-size: 1.1rem; line-height: 1.8;">
-                            There's a better way to handle calls, scheduling, and follow-up — without turning your
+                            There is a better way to handle calls, scheduling, and follow-up without turning your
                             business upside down.
                         </p>
                         <p style="font-size: 1.1rem; line-height: 1.8;">
-                            Automation, when done right, isn't flashy. It isn't disruptive. It doesn't replace your
+                            Automation, when done right, is not flashy. It is not disruptive. It does not replace your
                             team.
                         </p>
                         <p style="font-size: 1.1rem; line-height: 1.8;">
@@ -629,28 +666,28 @@
                             <i data-lucide="headphones" style="width: 26px; height: 26px;"></i>
                         </div>
                         <h3>No More Backup Receptionist</h3>
-                        <p>Stop being pulled away from your work to answer every ring.</p>
+                        <p>You stop being the one who has to answer every ring.</p>
                     </div>
                     <div class="means-card reveal reveal-delay-2">
                         <div class="means-card-icon">
                             <i data-lucide="trending-up" style="width: 26px; height: 26px;"></i>
                         </div>
                         <h3>No More Missed Revenue</h3>
-                        <p>Missed calls stop turning into missed opportunities.</p>
+                        <p>Missed calls stop turning into missed revenue.</p>
                     </div>
                     <div class="means-card reveal reveal-delay-3">
                         <div class="means-card-icon">
                             <i data-lucide="sunset" style="width: 26px; height: 26px;"></i>
                         </div>
                         <h3>Your Evenings Back</h3>
-                        <p>No more "just one more callback" eating into your personal time.</p>
+                        <p>Your evenings are not filled with "just one more callback."</p>
                     </div>
                     <div class="means-card reveal reveal-delay-4">
                         <div class="means-card-icon">
                             <i data-lucide="compass" style="width: 26px; height: 26px;"></i>
                         </div>
                         <h3>Run It, Don't Chase It</h3>
-                        <p>Run your business instead of being run by it.</p>
+                        <p>You can run your business instead of chasing it.</p>
                     </div>
                 </div>
             </div>
@@ -665,8 +702,9 @@
                     <span class="section-title">Who We Are</span>
                     <h2>Concierge-style automation<br><span class="gradient-text">for real businesses.</span></h2>
                     <p>
-                        MindWorx works alongside businesses to reduce missed calls, simplify scheduling, and take
-                        busywork off their plate — so they can run their business instead of chasing it.
+                        MindWorx is a concierge-style automation provider that works alongside businesses to reduce
+                        missed calls, simplify scheduling, and take busywork off their plate so they can run their
+                        business instead of chasing it.
                     </p>
 
                     <div class="values-row">
@@ -679,7 +717,7 @@
                     </div>
 
                     <p style="font-size: 1.2rem; margin-bottom: 2.5rem;">
-                        If you're curious where this goes, we'd love to connect.
+                        If you are curious where this goes, we would love to connect.
                     </p>
                     <a href="contact.html" class="btn btn-primary btn-lg">Let's Talk</a>
                     <p style="margin-top: 1rem; font-size: 0.95rem;">Or call us at <strong>(678) 866-0977</strong></p>
@@ -721,7 +759,7 @@
         handleResize();
 
         // Mobile Menu Toggle
-        const mobileNav = documentElId('mobile-nav');
+        const mobileNav = document.getElementById('mobile-nav');
         if (mobileMenuBtn && mobileNav) {
             mobileMenuBtn.addEventListener('click', () => {
                 const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
@@ -730,22 +768,27 @@
             });
         }
 
-        // Scroll-triggered reveal animations
+        // Scroll-triggered reveal animations using IntersectionObserver
         const revealElements = document.querySelectorAll('.reveal');
 
-        function checkReveal() {
-            const trigger = window.innerHeight * 0.88;
-            revealElements.forEach(el => {
-                const top = el.getBoundingClientRect().top;
-                if (top < trigger) {
-                    el.classList.add('visible');
-                }
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             });
-        }
 
-        window.addEventListener('scroll', checkReveal);
-        window.addEventListener('load', checkReveal);
-        checkReveal();
+            revealElements.forEach(el => observer.observe(el));
+        } else {
+            // Fallback: just show everything
+            revealElements.forEach(el => el.classList.add('visible'));
+        }
     </script>
 </body>
 
