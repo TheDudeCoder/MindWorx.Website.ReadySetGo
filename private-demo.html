@@ -449,18 +449,6 @@
                                         placeholder="(555) 123-4567">
                                 </div>
 
-                                <!-- Dynamic Urgent Toggle -->
-                                <div id="urgent-container" class="form-group hidden fade-in"
-                                    style="background: hsl(var(--muted)); padding: 1rem; border-radius: var(--radius); border: 1px solid hsl(var(--primary) / 0.2);">
-                                    <label class="flex items-center gap-3" style="cursor: pointer;">
-                                        <input type="checkbox" id="urgent" name="Urgent" value="yes"
-                                            style="width: 0.85rem; height: 0.85rem; accent-color: hsl(var(--primary)); flex-shrink: 0;">
-                                        <span style="font-size: 0.85rem; line-height: 1.2;"><strong>&nbsp;Want a
-                                                demonstration
-                                                now?</strong> I'll call you right back.</span>
-                                    </label>
-                                </div>
-
                                 <button type="submit" id="demo-submit-btn" class="btn btn-primary btn-lg"
                                     style="width: 100%; margin-top: 0.5rem;">
                                     Experience It!
@@ -529,7 +517,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             captureUTMParams();
             setupPhoneFormat();
-            setupUrgentToggle();
             setupDemoForm();
         });
 
@@ -555,21 +542,7 @@
             }
         }
 
-        // --- Urgent Toggle (show when phone entered) ---
-        function setupUrgentToggle() {
-            const phoneInput = document.getElementById('phone');
-            const urgentContainer = document.getElementById('urgent-container');
-            if (phoneInput && urgentContainer) {
-                phoneInput.addEventListener('input', () => {
-                    const digits = phoneInput.value.replace(/\D/g, '');
-                    if (digits.length >= 10) {
-                        urgentContainer.classList.remove('hidden');
-                    } else {
-                        urgentContainer.classList.add('hidden');
-                    }
-                });
-            }
-        }
+
 
         // --- Demo Form Submission ---
         function setupDemoForm() {
@@ -604,7 +577,7 @@
                         email: data.Email || "",
                         zip: data.Zip,
                         subject: data.Subject,
-                        status: data.Urgent ? "Urgent" : "New",
+                        status: "New",
                         notes: [
                             "Source: Private Demo Page",
                             data.utm_source ? `UTM Source: ${data.utm_source}` : "",

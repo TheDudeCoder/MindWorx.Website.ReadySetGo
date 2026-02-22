@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About MindWorx | A Revolution in Business Solutions</title>
+    <title>About MindWorx | It's Not About Us. It's About You.</title>
     <meta name="description"
-        content="MindWorx is an enterprise run by IT professionals passionate about transforming the way businesses operate. Dream It. Build It. Automate It.">
+        content="MindWorx helps small businesses eliminate missed calls, scheduling chaos, and busywork with practical AI automation. Practical. Honest. Grounded.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -20,7 +20,6 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* Shared Styles (Copied from index.html) */
         .hidden {
             display: none;
         }
@@ -46,20 +45,361 @@
             padding-bottom: 0.25rem;
         }
 
-        .relative {
+        /* ── Hero ── */
+        .about-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
             position: relative;
+            overflow: hidden;
         }
 
-        .z-10 {
-            z-index: 10;
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, hsl(var(--primary) / 0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
 
-        /* About Page Specific Styles */
-        .team-grid {
+        .hero-headline {
+            font-size: clamp(2.25rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-body p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-body p strong {
+            color: hsl(var(--foreground));
+        }
+
+        /* ── Friction list ── */
+        .friction-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 1.5rem 0 2rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        .friction-list li {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 999px;
+            border: 1px solid hsl(var(--primary) / 0.25);
+            background: hsl(var(--primary) / 0.06);
+            color: hsl(var(--muted-foreground));
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .friction-list li:hover {
+            border-color: hsl(var(--primary) / 0.5);
+            background: hsl(var(--primary) / 0.12);
+            transform: translateY(-2px);
+        }
+
+        .friction-list li i {
+            color: hsl(var(--primary));
+            flex-shrink: 0;
+        }
+
+        /* ── Divider ── */
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, hsl(var(--primary)), transparent);
+            border: none;
+            margin: 0 0 2rem;
+        }
+
+        /* ── Pain Points Section ── */
+        .pain-section {
+            background-color: hsl(var(--muted) / 0.3);
+        }
+
+        .pain-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .pain-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid hsl(var(--border) / 0.5);
+        }
+
+        .pain-item:last-child {
+            border-bottom: none;
+        }
+
+        .pain-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: hsl(var(--primary) / 0.1);
+            color: hsl(var(--primary));
+            flex-shrink: 0;
+        }
+
+        .pain-item p {
+            margin: 0;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .pain-item strong {
+            color: hsl(var(--foreground));
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        /* ── Better Way Section ── */
+        .better-way-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .action-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .action-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius);
+            margin-bottom: 0.75rem;
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border) / 0.5);
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .action-list li:hover {
+            border-color: hsl(var(--primary) / 0.4);
+            box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.08);
+            transform: translateX(4px);
+        }
+
+        .action-list li i {
+            color: hsl(var(--primary));
+            flex-shrink: 0;
+        }
+
+        .quietly-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, hsl(var(--primary) / 0.4), hsl(var(--primary)));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: 1rem;
+        }
+
+        /* ── What This Means Section ── */
+        .means-section {
+            background-color: hsl(var(--muted) / 0.3);
+        }
+
+        .means-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .means-card {
+            border-radius: var(--radius);
+            border: 1px solid hsl(var(--border) / 0.6);
+            background: linear-gradient(135deg, hsl(160 25% 10% / 0.8), hsl(160 25% 6% / 0.9));
+            backdrop-filter: blur(16px);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .means-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .means-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px hsl(var(--glow-primary) / 0.1);
+        }
+
+        .means-card:hover::before {
+            opacity: 1;
+        }
+
+        .means-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: hsl(var(--primary) / 0.1);
+            color: hsl(var(--primary));
+            margin: 0 auto 1.25rem;
+        }
+
+        .means-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .means-card p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* ── Who We Are Section ── */
+        .who-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .who-section::before {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, hsl(var(--primary) / 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .who-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .who-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .values-row {
+            display: flex;
+            justify-content: center;
             gap: 2rem;
-            margin-top: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .value-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            border-radius: 999px;
+            border: 1px solid hsl(var(--primary) / 0.3);
+            background: hsl(var(--primary) / 0.06);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: hsl(var(--primary));
+            letter-spacing: 0.04em;
+        }
+
+        /* ── Scroll Animations ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .reveal-delay-4 {
+            transition-delay: 0.35s;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+
+            .pain-grid,
+            .better-way-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .means-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .values-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .about-hero {
+                min-height: auto;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .means-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -81,7 +421,6 @@
             <nav class="hidden" id="desktop-nav"
                 style="display: flex; gap: 2rem; align-items: center; position: absolute; left: 50%; transform: translateX(-50%);">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link" style="color: hsl(var(--primary));">About</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
 
@@ -96,7 +435,6 @@
             style="border-top: 1px solid hsl(var(--border)); background: hsl(var(--background)); padding: 1rem;">
             <nav class="flex flex-col gap-4">
                 <a href="index.html" class="btn btn-outline" style="width: 100%;">Home</a>
-                <a href="about.html" class="btn btn-outline" style="width: 100%; color: hsl(var(--primary));">About</a>
                 <a href="contact.html" class="btn btn-outline" style="width: 100%;">Contact</a>
                 <a href="contact.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
             </nav>
@@ -104,154 +442,247 @@
     </header>
 
     <main>
-        <!-- Intro Section -->
-        <section class="py-12 fade-in">
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- HERO: It's not about us. It's about you.   -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section class="about-hero py-24 fade-in">
             <div class="container">
-                <div class="text-center" style="max-width: 900px; margin: 0 auto;">
-                    <span class="section-title">Welcome to MindWorx</span>
-                    <h1 class="gradient-text" style="margin-bottom: 1.5rem;">A Revolution in<br>Business Solutions</h1>
-                    <p class="lead">
-                        At the pinnacle of our organization stands <strong>MindWorx</strong>—an enterprise run by IT
-                        professionals who are passionate about transforming the way businesses operate. Our mission is
-                        simple yet profound: <strong>to make an impact</strong>.
+                <div style="max-width: 800px;">
+                    <span class="section-title">About MindWorx</span>
+                    <h1 class="hero-headline">
+                        <span class="gradient-text">It's not about us.</span><br>
+                        It's about <em>you</em>.
+                    </h1>
+
+                    <div class="hero-body">
+                        <p>You didn't start your business to answer calls regardless of what time it is.</p>
+                        <p>You didn't start it to chase down appointments, return missed calls, or spend your evenings
+                            confirming schedules.</p>
+                        <p><strong>You started it to do the work. To serve customers. To build something that was
+                                yours.</strong></p>
+                        <p>But somewhere along the way, the busywork started piling up.</p>
+                    </div>
+
+                    <ul class="friction-list">
+                        <li><i data-lucide="phone-missed" style="width: 16px; height: 16px;"></i> Missed calls</li>
+                        <li><i data-lucide="reply" style="width: 16px; height: 16px;"></i> Follow-ups</li>
+                        <li><i data-lucide="calendar-clock" style="width: 16px; height: 16px;"></i> Scheduling back &
+                            forth</li>
+                        <li><i data-lucide="clipboard-list" style="width: 16px; height: 16px;"></i> Admin tasks that
+                            never end</li>
+                    </ul>
+
+                    <p style="font-size: 1.15rem; line-height: 1.8; color: hsl(var(--muted-foreground));">
+                        That's not a motivation problem. It's not a work ethic problem.<br>
+                        <strong style="color: hsl(var(--primary)); font-size: 1.2rem;">It's a systems
+                            problem.</strong>
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- THE REALITY                                 -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section class="py-24 pain-section">
+            <div class="container">
+                <div class="pain-grid">
+                    <div class="reveal">
+                        <span class="section-title">The Reality</span>
+                        <h2>Most small business owners aren't looking for technology.</h2>
+                        <hr class="section-divider">
+                        <p style="font-size: 1.1rem; line-height: 1.8;">
+                            You don't need another complicated tool. You don't need a full-time hire just to answer
+                            phones. You don't need a complete overhaul of how you operate.
+                        </p>
+                        <p style="font-size: 1.15rem; line-height: 1.8;">
+                            <strong style="color: hsl(var(--foreground));">You need practical systems that quietly
+                                remove friction.</strong>
+                        </p>
+                    </div>
+
+                    <div class="reveal reveal-delay-2">
+                        <div class="card glass-card"
+                            style="box-shadow: 0 0 30px hsl(var(--glow-primary) / 0.08); padding: 2rem;">
+                            <h3 class="flex items-center gap-2" style="margin-bottom: 1.5rem;">
+                                <i data-lucide="search" style="color: hsl(var(--primary));"></i>
+                                They're looking for...
+                            </h3>
+
+                            <div class="pain-item">
+                                <div class="pain-icon"><i data-lucide="bell-off" style="width: 20px; height: 20px;"></i>
+                                </div>
+                                <div>
+                                    <strong>Fewer interruptions</strong>
+                                    <p>Stop the constant context-switching</p>
+                                </div>
+                            </div>
+
+                            <div class="pain-item">
+                                <div class="pain-icon"><i data-lucide="target" style="width: 20px; height: 20px;"></i>
+                                </div>
+                                <div>
+                                    <strong>Fewer missed opportunities</strong>
+                                    <p>Every call answered, every lead captured</p>
+                                </div>
+                            </div>
+
+                            <div class="pain-item">
+                                <div class="pain-icon"><i data-lucide="moon" style="width: 20px; height: 20px;"></i>
+                                </div>
+                                <div>
+                                    <strong>Fewer late-night callbacks</strong>
+                                    <p>Your evenings are yours again</p>
+                                </div>
+                            </div>
+
+                            <div class="pain-item">
+                                <div class="pain-icon"><i data-lucide="layers" style="width: 20px; height: 20px;"></i>
+                                </div>
+                                <div>
+                                    <strong>Less administrative chaos</strong>
+                                    <p>Systems that handle themselves</p>
+                                </div>
+                            </div>
+
+                            <div class="pain-item">
+                                <div class="pain-icon"><i data-lucide="clock" style="width: 20px; height: 20px;"></i>
+                                </div>
+                                <div>
+                                    <strong>More time to actually run the business</strong>
+                                    <p>Focus on what only you can do</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- A BETTER WAY                                -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section class="py-24">
+            <div class="container">
+                <div class="better-way-grid">
+                    <div class="reveal">
+                        <span class="section-title">A Better Way</span>
+                        <h2>Most owners don't wake up thinking about AI.</h2>
+                        <hr class="section-divider">
+                        <p style="font-size: 1.1rem; line-height: 1.8;">
+                            They wake up thinking about doing the job. <strong
+                                style="color: hsl(var(--foreground));">That's the problem we're choosing to work
+                                on.</strong>
+                        </p>
+                        <p style="font-size: 1.1rem; line-height: 1.8;">
+                            There's a better way to handle calls, scheduling, and follow-up — without turning your
+                            business upside down.
+                        </p>
+                        <p style="font-size: 1.1rem; line-height: 1.8;">
+                            Automation, when done right, isn't flashy. It isn't disruptive. It doesn't replace your
+                            team.
+                        </p>
+                        <p style="font-size: 1.1rem; line-height: 1.8;">
+                            <strong style="color: hsl(var(--foreground));">It simply handles the repetitive work so you
+                                can focus on what actually moves your business forward.</strong>
+                        </p>
+                    </div>
+
+                    <div class="reveal reveal-delay-2">
+                        <ul class="action-list">
+                            <li>
+                                <i data-lucide="phone-incoming" style="width: 22px; height: 22px;"></i>
+                                Answer the call.
+                            </li>
+                            <li>
+                                <i data-lucide="calendar-check" style="width: 22px; height: 22px;"></i>
+                                Book the appointment.
+                            </li>
+                            <li>
+                                <i data-lucide="bell-ring" style="width: 22px; height: 22px;"></i>
+                                Send the reminder.
+                            </li>
+                            <li>
+                                <i data-lucide="repeat" style="width: 22px; height: 22px;"></i>
+                                Follow up when needed.
+                            </li>
+                        </ul>
+                        <p class="quietly-text">Quietly. Reliably.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- WHAT THIS MEANS FOR YOU                     -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section class="py-24 means-section">
+            <div class="container">
+                <div class="text-center reveal" style="max-width: 700px; margin: 0 auto 3rem;">
+                    <span class="section-title">What This Means For You</span>
+                    <h2 class="gradient-text">Real impact. Real change.</h2>
+                </div>
+
+                <div class="means-grid">
+                    <div class="means-card reveal reveal-delay-1">
+                        <div class="means-card-icon">
+                            <i data-lucide="headphones" style="width: 26px; height: 26px;"></i>
+                        </div>
+                        <h3>No More Backup Receptionist</h3>
+                        <p>Stop being pulled away from your work to answer every ring.</p>
+                    </div>
+                    <div class="means-card reveal reveal-delay-2">
+                        <div class="means-card-icon">
+                            <i data-lucide="trending-up" style="width: 26px; height: 26px;"></i>
+                        </div>
+                        <h3>No More Missed Revenue</h3>
+                        <p>Missed calls stop turning into missed opportunities.</p>
+                    </div>
+                    <div class="means-card reveal reveal-delay-3">
+                        <div class="means-card-icon">
+                            <i data-lucide="sunset" style="width: 26px; height: 26px;"></i>
+                        </div>
+                        <h3>Your Evenings Back</h3>
+                        <p>No more "just one more callback" eating into your personal time.</p>
+                    </div>
+                    <div class="means-card reveal reveal-delay-4">
+                        <div class="means-card-icon">
+                            <i data-lucide="compass" style="width: 26px; height: 26px;"></i>
+                        </div>
+                        <h3>Run It, Don't Chase It</h3>
+                        <p>Run your business instead of being run by it.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- WHO WE ARE                                  -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section class="py-24 who-section">
+            <div class="container">
+                <div class="who-content reveal">
+                    <span class="section-title">Who We Are</span>
+                    <h2>Concierge-style automation<br><span class="gradient-text">for real businesses.</span></h2>
                     <p>
-                        We are laser-focused on assembling the brightest minds in the industry—people with vision,
-                        creativity, and the tenacity to overcome challenges. Collaboration and teamwork are not just
-                        values; they are the lifeblood of our company.
+                        MindWorx works alongside businesses to reduce missed calls, simplify scheduling, and take
+                        busywork off their plate — so they can run their business instead of chasing it.
                     </p>
-                </div>
-            </div>
-        </section>
 
-        <!-- Business Model -->
-        <section class="py-24" style="background-color: hsl(var(--muted) / 0.3);">
-            <div class="container">
-                <div class="relative mb-8">
-                    <span class="section-title z-10">Our Model</span>
-                </div>
-                <h2>Our Unique Business Model</h2>
-
-                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;">
-                    <!-- DreamWorx -->
-                    <div class="card">
-                        <h3>DreamWorx <span style="font-size: 0.8em; opacity: 0.7; font-weight: 400;">— The
-                                Visionaries</span></h3>
-                        <p>At the forefront of MindWorx is <strong>DreamWorx</strong>, the face of our organization and
-                            the first point of contact for our clients.</p>
-                        <p>The DreamWorx team meets with business leaders to understand their challenges, concerns, and
-                            aspirations—then shares a clear, compelling vision of what’s possible.</p>
-                        <p class="mb-0">They don’t just listen—they <strong>inspire</strong>. By partnering closely with
-                            clients, DreamWorx fosters an environment of trust where dreams become actionable plans.</p>
+                    <div class="values-row">
+                        <span class="value-chip"><i data-lucide="anchor" style="width: 18px; height: 18px;"></i>
+                            Practical</span>
+                        <span class="value-chip"><i data-lucide="shield-check" style="width: 18px; height: 18px;"></i>
+                            Honest</span>
+                        <span class="value-chip"><i data-lucide="mountain" style="width: 18px; height: 18px;"></i>
+                            Grounded</span>
                     </div>
 
-                    <!-- HyperWorx -->
-                    <div class="card">
-                        <h3>HyperWorx <span style="font-size: 0.8em; opacity: 0.7; font-weight: 400;">— The
-                                Innovators</span></h3>
-                        <p>Once ideas and challenges are gathered, <strong>HyperWorx</strong> steps in.</p>
-                        <p>This team specializes in building <strong>Proof of Concepts (POCs)</strong> that bring ideas
-                            to life. These early-stage solutions provide tangible demonstrations, allowing clients to
-                            experience their vision in action.</p>
-                        <p class="mb-0">HyperWorx operates with speed and precision, using reusable foundations to
-                            deliver high-value POCs that spark excitement and validate direction.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Specialty Teams -->
-        <section class="py-24">
-            <div class="container">
-                <div class="text-center" style="max-width: 800px; margin: 0 auto 4rem auto;">
-                    <span class="section-title">Specialty Teams</span>
-                    <h2>Turning Concepts Into Reality</h2>
-                    <p>Once DreamWorx and HyperWorx have laid the foundation, our <strong>specialty teams</strong> take
-                        over. These teams are industry-focused experts who transform refined POCs into fully realized,
-                        production-ready solutions.</p>
-                </div>
-
-                <div class="team-grid">
-                    <div class="card">
-                        <div style="color: hsl(var(--primary)); margin-bottom: 1rem;"><i data-lucide="users"></i></div>
-                        <h3>CommunityWorx</h3>
-                        <p>Focused on empowering communities with AI solutions that enhance public services, foster
-                            meaningful connections, and improve quality of life—from smart cities to local support
-                            systems.</p>
-                    </div>
-                    <div class="card">
-                        <div style="color: hsl(var(--primary)); margin-bottom: 1rem;"><i data-lucide="heart-pulse"></i>
-                        </div>
-                        <h3>HealthWorx</h3>
-                        <p>Reimagining healthcare through AI-driven solutions, focusing on improving patient care,
-                            operational efficiency, and medical innovation to deliver better outcomes.</p>
-                    </div>
-                    <div class="card">
-                        <div style="color: hsl(var(--primary)); margin-bottom: 1rem;"><i data-lucide="shield"></i></div>
-                        <h3>HeroicWorx</h3>
-                        <p>Dedicated to supporting first responders—police, fire, military, and EMT services—delivering
-                            AI solutions that enhance operational efficiency and ensure safety.</p>
-                    </div>
-                    <div class="card">
-                        <div style="color: hsl(var(--primary)); margin-bottom: 1rem;"><i
-                                data-lucide="graduation-cap"></i></div>
-                        <h3>SchoolWorx</h3>
-                        <p>Transforming education with AI-powered tools for personalized learning, curriculum
-                            development, and administrative efficiency.</p>
-                    </div>
-                    <div class="card">
-                        <div style="color: hsl(var(--primary)); margin-bottom: 1rem;"><i data-lucide="droplets"></i>
-                        </div>
-                        <h3>WaterWorx</h3>
-                        <p>Specializing in water utilities, developing intelligent solutions for distribution
-                            optimization, leak detection, sustainability, and infrastructure resilience.</p>
-                    </div>
-                    <div class="card">
-                        <div style="color: hsl(var(--primary)); margin-bottom: 1rem;"><i data-lucide="trophy"></i></div>
-                        <h3>TeamWorx</h3>
-                        <p>Focused on sports and athletics, leveling the playing field for athletes and organizations by
-                            delivering AI-driven solutions that enhance performance.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Culture & Growth -->
-        <section class="py-24">
-            <div class="container">
-                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-                    <div>
-                        <span class="section-title">Our Culture</span>
-                        <h2 class="gradient-text" style="margin-bottom: 1.5rem;">Collaboration at Our Core</h2>
-                        <p>At MindWorx, collaboration isn’t confined to individual
-                            teams—it’s the driving force behind everything we do. Ideas, tools, and best practices flow
-                            freely across divisions, creating a culture of shared knowledge and continuous improvement.
-                        </p>
-
-                        <div style="margin-top: 2rem;">
-                            <h3 style="font-size: 1.25rem;">We Believe In:</h3>
-                            <ul style="margin-top: 1rem; color: hsl(var(--muted-foreground));">
-                                <li style="margin-bottom: 0.5rem"><strong>Professional Development:</strong> Continuous
-                                    learning and skill-building.</li>
-                                <li style="margin-bottom: 0.5rem"><strong>Shared Rewards:</strong> Success is a team
-                                    effort, and everyone shares in the results.</li>
-                                <li><strong>Empowered Innovation:</strong> Creativity and bold thinking are encouraged.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card glass-card"
-                        style="text-align: center; box-shadow: 0 0 30px hsl(var(--glow-primary) / 0.1);">
-                        <h2>Work Less. Grow More.</h2>
-                        <p style="margin-bottom: 2rem;">
-                            MindWorx is more than a company—it’s a community of innovators, dreamers, and doers. We’ve
-                            got the ultimate team to tackle today’s challenges.
-                        </p>
-                        <p class="gradient-text" style="font-size: 1.25rem; font-weight: 700; margin-bottom: 2rem;">
-                            Dream It. Build It. Innovate It.
-                        </p>
-                        <a href="contact.html" class="btn btn-primary">Get Started</a>
-                    </div>
+                    <p style="font-size: 1.2rem; margin-bottom: 2.5rem;">
+                        If you're curious where this goes, we'd love to connect.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary btn-lg">Let's Talk</a>
+                    <p style="margin-top: 1rem; font-size: 0.95rem;">Or call us at <strong>(678) 866-0977</strong></p>
                 </div>
             </div>
         </section>
@@ -272,7 +703,7 @@
     <script>
         lucide.createIcons();
 
-        // Simple media query handling for mobile menu visibility in JS if needed
+        // Simple media query handling for mobile menu visibility
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const desktopNav = document.getElementById('desktop-nav');
 
@@ -287,10 +718,10 @@
         }
 
         window.addEventListener('resize', handleResize);
-        handleResize(); // Init
+        handleResize();
 
-        // Mobile Menu Toggle Logic (Inline for simplicity)
-        const mobileNav = document.getElementById('mobile-nav');
+        // Mobile Menu Toggle
+        const mobileNav = documentElId('mobile-nav');
         if (mobileMenuBtn && mobileNav) {
             mobileMenuBtn.addEventListener('click', () => {
                 const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
@@ -298,6 +729,23 @@
                 mobileNav.classList.toggle('hidden');
             });
         }
+
+        // Scroll-triggered reveal animations
+        const revealElements = document.querySelectorAll('.reveal');
+
+        function checkReveal() {
+            const trigger = window.innerHeight * 0.88;
+            revealElements.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < trigger) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+        checkReveal();
     </script>
 </body>
 
