@@ -838,14 +838,38 @@
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
 
-                if (submitBtn) {
-                    submitBtn.disabled = true;
-                    submitBtn.textContent = 'Sending...';
-                }
-
                 if (formStatus) {
                     formStatus.textContent = '';
                     formStatus.className = 'form-status';
+                }
+
+                // --- Submit-time validation ---
+                const formData0 = new FormData(form);
+                const preCheck = Object.fromEntries(formData0.entries());
+                const rawPhone = (preCheck.Phone || '').replace(/\D/g, '');
+                const hasEmail = preCheck.Email && preCheck.Email.trim().length > 0;
+                const hasPhone = rawPhone.length >= 10;
+                const isUrgent = preCheck.Urgent !== undefined;
+
+                if (!hasEmail && !hasPhone) {
+                    if (formStatus) {
+                        formStatus.textContent = 'Please enter an email address or phone number.';
+                        formStatus.className = 'form-status error';
+                    }
+                    return;
+                }
+
+                if (isUrgent && !hasPhone) {
+                    if (formStatus) {
+                        formStatus.textContent = 'A valid phone number is required for a live demonstration.';
+                        formStatus.className = 'form-status error';
+                    }
+                    return;
+                }
+
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
                 }
 
                 const formData = new FormData(form);
