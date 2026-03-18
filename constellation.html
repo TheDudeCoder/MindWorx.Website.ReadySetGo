@@ -431,6 +431,19 @@
             }
         }
 
+        .cta-title-nowrap {
+            font-size: clamp(1.25rem, 2.5vw, 1.85rem);
+            white-space: nowrap;
+            letter-spacing: -0.03em;
+        }
+
+        @media (max-width: 768px) {
+            .cta-title-nowrap {
+                white-space: normal;
+                font-size: 1.5rem;
+            }
+        }
+
         /* Gap utilities */
         .gap-2 {
             gap: 0.5rem;
@@ -508,7 +521,7 @@
                     <!-- Right: CTA Card -->
                     <div class="card glass-card"
                         style="text-align: center; box-shadow: 0 0 30px hsl(var(--glow-primary) / 0.1);">
-                        <h2>Uncover what’s been there all along.</h2>
+                        <h2 class="cta-title-nowrap">Uncover what’s been there all along.</h2>
                         <p style="margin-bottom: 2rem;">
                             If you are curious where this goes, we would love to connect.
                         </p>
