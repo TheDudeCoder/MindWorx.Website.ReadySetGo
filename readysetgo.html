@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReadySetGo by MindWorx | AI Booking Assistant for Service Businesses</title>
+    <meta name="description"
+        content="ReadySetGo is an AI booking assistant for service businesses. It follows up with leads, answers booking calls, checks your live calendar, schedules appointments, and sends personalized confirmations.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Shared overrides */
+        .hidden {
+            display: none;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: hsla(var(--background) / 0.8);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .section-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: hsl(var(--primary));
+            margin-bottom: 1rem;
+            display: inline-block;
+            border-bottom: 2px solid hsl(var(--primary));
+            padding-bottom: 0.25rem;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .z-10 {
+            z-index: 10;
+        }
+
+        /* ===== ReadySetGo Page Styles ===== */
+
+        /* Star-field background overlay (shared visual with Constellation) */
+        .starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .starfield::before,
+        .starfield::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .starfield::before {
+            background-image:
+                radial-gradient(1px 1px at 10% 20%, hsl(var(--primary) / 0.6) 50%, transparent 50%),
+                radial-gradient(1px 1px at 30% 65%, hsl(var(--primary) / 0.4) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 50% 10%, hsl(var(--primary) / 0.7) 50%, transparent 50%),
+                radial-gradient(1px 1px at 70% 40%, hsl(var(--primary) / 0.5) 50%, transparent 50%),
+                radial-gradient(1px 1px at 85% 75%, hsl(var(--primary) / 0.4) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 15% 80%, hsl(var(--primary) / 0.6) 50%, transparent 50%),
+                radial-gradient(1px 1px at 60% 85%, hsl(var(--primary) / 0.3) 50%, transparent 50%),
+                radial-gradient(1px 1px at 92% 15%, hsl(var(--primary) / 0.5) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 40% 45%, hsl(var(--primary) / 0.4) 50%, transparent 50%),
+                radial-gradient(1px 1px at 78% 92%, hsl(var(--primary) / 0.6) 50%, transparent 50%);
+            animation: rsg-twinkle 8s ease-in-out infinite alternate;
+        }
+
+        .starfield::after {
+            background-image:
+                radial-gradient(1px 1px at 20% 50%, hsl(var(--primary) / 0.5) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 45% 30%, hsl(var(--primary) / 0.3) 50%, transparent 50%),
+                radial-gradient(1px 1px at 65% 60%, hsl(var(--primary) / 0.6) 50%, transparent 50%),
+                radial-gradient(1px 1px at 88% 45%, hsl(var(--primary) / 0.4) 50%, transparent 50%),
+                radial-gradient(1.5px 1.5px at 5% 55%, hsl(var(--primary) / 0.5) 50%, transparent 50%),
+                radial-gradient(1px 1px at 35% 90%, hsl(var(--primary) / 0.3) 50%, transparent 50%),
+                radial-gradient(1px 1px at 55% 5%, hsl(var(--primary) / 0.7) 50%, transparent 50%),
+                radial-gradient(1px 1px at 75% 20%, hsl(var(--primary) / 0.4) 50%, transparent 50%);
+            animation: rsg-twinkle 6s ease-in-out 2s infinite alternate-reverse;
+        }
+
+        @keyframes rsg-twinkle {
+            0% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        /* Hero */
+        .rsg-hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .rsg-hero h1 {
+            margin-bottom: 2rem;
+        }
+
+        .rsg-hero .lead {
+            max-width: 640px;
+        }
+
+        /* Responsive hero grid */
+        @media (max-width: 900px) {
+            .hero-grid-rsg {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        .cta-title-nowrap {
+            font-size: clamp(1.25rem, 2.5vw, 1.85rem);
+            white-space: nowrap;
+            letter-spacing: -0.03em;
+        }
+
+        @media (max-width: 768px) {
+            .cta-title-nowrap {
+                white-space: normal;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Problem section pull-quote */
+        .pull-quote {
+            font-size: 1.35rem;
+            font-weight: 600;
+            line-height: 1.6;
+            padding: 2rem;
+            border-left: 3px solid hsl(var(--primary));
+            background: hsl(var(--card) / 0.4);
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .pull-quote span {
+            color: hsl(var(--muted-foreground));
+            font-weight: 400;
+            font-size: 1rem;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        /* How It Works (5-step row) */
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.25rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 1100px) {
+            .how-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .how-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .how-step {
+            border-radius: var(--radius);
+            border: 1px solid hsl(var(--border) / 0.6);
+            background: linear-gradient(135deg, hsl(160 25% 10% / 0.6), hsl(160 25% 6% / 0.8));
+            backdrop-filter: blur(8px);
+            padding: 1.5rem;
+            position: relative;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .how-step:hover {
+            transform: translateY(-4px);
+            border-color: hsl(var(--primary) / 0.4);
+        }
+
+        .how-step-number {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: hsl(var(--primary));
+            letter-spacing: 0.12em;
+            margin-bottom: 0.75rem;
+        }
+
+        .how-step-icon {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 8px;
+            background: hsl(var(--primary) / 0.12);
+            color: hsl(var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.85rem;
+        }
+
+        .how-step h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .how-step p {
+            font-size: 0.9rem;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* Features grid */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 1100px) {
+            .feature-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .feature-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card {
+            border-radius: var(--radius);
+            border: 1px solid hsl(var(--border) / 0.6);
+            background: linear-gradient(135deg, hsl(160 25% 10% / 0.6), hsl(160 25% 6% / 0.8));
+            backdrop-filter: blur(8px);
+            padding: 1.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: hsl(var(--primary) / 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px hsl(var(--primary) / 0.15);
+        }
+
+        .feature-icon {
+            color: hsl(var(--primary));
+            margin-bottom: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 8px;
+            background: hsl(var(--primary) / 0.12);
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* Who It's For pill list */
+        .audience-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .audience-pill {
+            border: 1px solid hsl(var(--border));
+            background: hsl(var(--card) / 0.6);
+            color: hsl(var(--foreground));
+            border-radius: 999px;
+            padding: 0.6rem 1.1rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Closing statement */
+        .closing-statement {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .closing-statement h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: hsl(var(--muted-foreground));
+            margin-top: 2rem;
+        }
+
+        .gap-2 {
+            gap: 0.5rem;
+        }
+    </style>
+</head>
+
+<body class="dotted-bg relative">
+    <div class="starfield"></div>
+    <div class="gradient-radial"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container py-6 flex justify-between items-center" style="position: relative;">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <span style="font-weight: 700; font-size: 1.25rem;">MindWorx</span>
+                </a>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden" id="desktop-nav"
+                style="display: flex; gap: 2rem; align-items: center; position: absolute; left: 50%; transform: translateX(-50%);">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link nav-dropdown-toggle" style="color: hsl(var(--primary));"
+                        aria-haspopup="true" aria-expanded="false">
+                        Products
+                        <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
+                    </a>
+                    <div class="nav-dropdown-menu" role="menu">
+                        <a href="constellation.html" role="menuitem">Constellation</a>
+                        <a href="readysetgo.html" class="is-active" role="menuitem">ReadySetGo</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="btn btn-outline" aria-label="Toggle menu" style="display: none;">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-nav" class="hidden"
+            style="border-top: 1px solid hsl(var(--border)); background: hsl(var(--background)); padding: 1rem;">
+            <nav class="flex flex-col gap-4">
+                <a href="index.html" class="btn btn-outline" style="width: 100%;">Home</a>
+                <a href="about.html" class="btn btn-outline" style="width: 100%;">About</a>
+                <p class="mobile-nav-section-label">Products</p>
+                <a href="constellation.html" class="btn btn-outline" style="width: 100%;">Constellation</a>
+                <a href="readysetgo.html" class="btn btn-outline"
+                    style="width: 100%; color: hsl(var(--primary));">ReadySetGo</a>
+                <a href="contact.html" class="btn btn-outline" style="width: 100%;">Contact</a>
+                <a href="contact.html" class="btn btn-primary" style="width: 100%;">Get in Touch</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="rsg-hero py-24 fade-in">
+            <div class="container">
+                <div class="grid hero-grid-rsg"
+                    style="grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center;">
+                    <!-- Left: Copy -->
+                    <div>
+                        <span class="section-title">Introducing ReadySetGo</span>
+                        <h1>
+                            <span class="gradient-text">Book more</span><br>appointments.
+                        </h1>
+                        <p class="lead">
+                            ReadySetGo is an AI booking assistant for service businesses. It follows up with new
+                            leads, answers booking calls, checks your live Google or Outlook calendar, schedules
+                            appointments, and sends personalized confirmations automatically.
+                        </p>
+                        <p class="lead" style="margin-top: 1rem;">
+                            No more chasing callbacks. No more endless scheduling back-and-forth.
+                            <strong style="color: hsl(var(--foreground));">Just faster follow-up, cleaner booking,
+                                and more visibility into what happened.</strong>
+                        </p>
+                    </div>
+
+                    <!-- Right: CTA Card -->
+                    <div class="card glass-card"
+                        style="text-align: center; box-shadow: 0 0 30px hsl(var(--glow-primary) / 0.1);">
+                        <h2 class="cta-title-nowrap">One missed call can cost thousands.</h2>
+                        <p style="margin-bottom: 2rem;">
+                            Every call is an opportunity. Don't wait, get started today.
+                        </p>
+                        <p class="gradient-text" style="font-size: 1.25rem; font-weight: 700; margin-bottom: 2rem;">
+                            Practical. Honest. Grounded.
+                        </p>
+                        <a href="https://readysetgo.mindworx.ai" class="btn btn-primary">
+                            Start Free Trial
+                            <i data-lucide="arrow-right" style="width: 16px; height: 16px; margin-left: 0.5rem;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem -->
+        <section class="py-24" style="background-color: hsl(var(--muted) / 0.3);">
+            <div class="container">
+                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                    <div>
+                        <span class="section-title">The Problem</span>
+                        <h2>Missed calls cost money.</h2>
+                        <p style="font-size: 1.1rem; line-height: 1.7;">
+                            Most service businesses don't lose leads because they're bad at what they do. They lose
+                            leads because they're busy.
+                        </p>
+                        <p style="font-size: 1.1rem; line-height: 1.7;">
+                            A customer fills out a form after hours. The phone rings while your team is on a job. A
+                            lead asks for a time that's already booked. A simple appointment turns into four rounds
+                            of back-and-forth.
+                        </p>
+                        <p style="font-size: 1.1rem; line-height: 1.7;">
+                            ReadySetGo handles the first response, the scheduling conversation, the booking, and
+                            the confirmation, automatically.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="pull-quote">
+                            Your customers aren't picky.<br>
+                            <strong style="color: hsl(var(--primary));">They just want a fast, clear answer when
+                                they reach out.</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="py-24">
+            <div class="container">
+                <div class="text-center" style="max-width: 720px; margin: 0 auto;">
+                    <span class="section-title">How It Works</span>
+                    <h2 class="gradient-text">Five steps. Mostly hands-off.</h2>
+                    <p style="font-size: 1.1rem;">
+                        From the moment a lead reaches out to the moment they're booked and confirmed, ReadySetGo
+                        runs the whole conversation for you.
+                    </p>
+                </div>
+
+                <div class="how-grid">
+                    <div class="how-step">
+                        <div class="how-step-number">STEP 01</div>
+                        <div class="how-step-icon"><i data-lucide="clipboard-list"></i></div>
+                        <h3>Capture the request</h3>
+                        <p>Add a simple form to your website so customers can request service and share their
+                            details.</p>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-number">STEP 02</div>
+                        <div class="how-step-icon"><i data-lucide="phone-call"></i></div>
+                        <h3>Follow up quickly</h3>
+                        <p>ReadySetGo can place an AI voice call within minutes, while the lead is still
+                            interested.</p>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-number">STEP 03</div>
+                        <div class="how-step-icon"><i data-lucide="calendar-search"></i></div>
+                        <h3>Check real availability</h3>
+                        <p>The assistant reads your live Google or Outlook calendar, respects your hours, and
+                            avoids conflicts.</p>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-number">STEP 04</div>
+                        <div class="how-step-icon"><i data-lucide="calendar-plus"></i></div>
+                        <h3>Book the appointment</h3>
+                        <p>If the requested time is open, it books. If not, it offers nearby alternatives instead
+                            of losing the lead.</p>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-number">STEP 05</div>
+                        <div class="how-step-icon"><i data-lucide="mail-check"></i></div>
+                        <h3>Confirm and inform</h3>
+                        <p>Customers get a personalized confirmation email with secure links to cancel or
+                            reschedule.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="py-24" style="background-color: hsl(var(--muted) / 0.3);">
+            <div class="container">
+                <div class="text-center" style="max-width: 720px; margin: 0 auto 3rem auto;">
+                    <span class="section-title">What's Included</span>
+                    <h2>Everything you need to book more and chase less.</h2>
+                </div>
+
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="phone"></i></div>
+                        <h3>AI Voice Booking Assistant</h3>
+                        <p>Handles outbound follow-up and inbound booking calls so customers can book, cancel, or
+                            reschedule by voice.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="layout"></i></div>
+                        <h3>Website Lead Capture</h3>
+                        <p>Collect new requests from your existing site with an embedded form, iframe, or hosted
+                            booking page.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="calendar"></i></div>
+                        <h3>Google &amp; Outlook Calendar</h3>
+                        <p>Books directly against the calendar your team already uses. One source of truth, no
+                            double-bookings.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="clock"></i></div>
+                        <h3>Real-Time Availability</h3>
+                        <p>Offers slots based on your actual schedule, hours, appointment length, and configured
+                            buffers.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="shuffle"></i></div>
+                        <h3>Alternative Time Suggestions</h3>
+                        <p>If the requested slot is taken, ReadySetGo offers nearby times to keep the conversation
+                            moving.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="mail"></i></div>
+                        <h3>Personalized Confirmation Emails</h3>
+                        <p>Confirmation, cancellation, and reschedule emails that match your business tone and
+                            include the actual details.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="link"></i></div>
+                        <h3>Secure Cancel &amp; Reschedule Links</h3>
+                        <p>Customers manage changes from secure links in their confirmation, no account or callback
+                            required.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i data-lucide="layout-dashboard"></i></div>
+                        <h3>Dashboard Visibility</h3>
+                        <p>Review contacts, appointments, calls, summaries, emails, and plan usage from one
+                            screen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who It's For -->
+        <section class="py-24">
+            <div class="container">
+                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                    <div>
+                        <span class="section-title">Who It's For</span>
+                        <h2 class="gradient-text">Built for service businesses that run on appointments.</h2>
+                        <p style="font-size: 1.1rem; line-height: 1.7;">
+                            ReadySetGo is a strong fit for any business where most of the revenue depends on
+                            consultations, estimates, service visits, or scheduled work.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="audience-list">
+                            <span class="audience-pill">Home services</span>
+                            <span class="audience-pill">Contractors and trades</span>
+                            <span class="audience-pill">Professional services</span>
+                            <span class="audience-pill">Local service companies</span>
+                            <span class="audience-pill">Appointment-based businesses</span>
+                            <span class="audience-pill">Small teams with no front desk</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing CTA -->
+        <section class="py-24" style="background-color: hsl(var(--muted) / 0.3);">
+            <div class="container">
+                <div class="closing-statement">
+                    <span class="section-title">Ready to book more?</span>
+                    <h2 class="gradient-text">Simple. Fast. Booked.</h2>
+                    <p>
+                        <strong style="color: hsl(var(--foreground));">Stop chasing callbacks. Start running your
+                            day.</strong><br>
+                        Let ReadySetGo respond faster, answer more booking calls, and turn more inquiries into
+                        scheduled appointments.
+                    </p>
+
+                    <div class="tagline">Practical. Honest. Grounded.</div>
+                    <div style="margin-top: 2rem;">
+                        <a href="https://readysetgo.mindworx.ai" class="btn btn-primary btn-lg">
+                            Start Free Trial
+                            <i data-lucide="arrow-right" style="width: 16px; height: 16px; margin-left: 0.5rem;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background-color: hsl(var(--muted)); padding: 4rem 0;">
+        <div class="container text-center">
+            <div style="margin-bottom: 1.5rem; color: hsl(var(--muted-foreground));">
+                <span style="font-weight: 700;">MindWorx</span>
+            </div>
+            <p>&copy; 2026 MindWorx. Practical. Honest. Grounded.</p>
+        </div>
+    </footer>
+
+    <!-- Init Icons -->
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu visibility
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const desktopNav = document.getElementById('desktop-nav');
+
+        function handleResize() {
+            if (window.innerWidth < 768) {
+                mobileMenuBtn.style.display = 'inline-flex';
+                desktopNav.style.display = 'none';
+            } else {
+                mobileMenuBtn.style.display = 'none';
+                desktopNav.style.display = 'flex';
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        // Mobile Menu Toggle
+        const mobileNav = document.getElementById('mobile-nav');
+        if (mobileMenuBtn && mobileNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+                mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+                mobileNav.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -69,8 +69,7 @@
     <header>
         <div class="container py-6 flex justify-between items-center" style="position: relative;">
             <div class="logo">
-                <a href="index.html" class="flex items-center gap-2" style="text-decoration: none; color: inherit;">
-                    <i data-lucide="brain-circuit" style="color: hsl(var(--primary))"></i>
+                <a href="index.html" style="text-decoration: none; color: inherit;">
                     <span style="font-weight: 700; font-size: 1.25rem;">MindWorx</span>
                 </a>
             </div>
@@ -80,7 +79,16 @@
                 style="display: flex; gap: 2rem; align-items: center; position: absolute; left: 50%; transform: translateX(-50%);">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About</a>
-                <a href="constellation.html" class="nav-link">Constellation</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        Products
+                        <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
+                    </a>
+                    <div class="nav-dropdown-menu" role="menu">
+                        <a href="constellation.html" role="menuitem">Constellation</a>
+                        <a href="readysetgo.html" role="menuitem">ReadySetGo</a>
+                    </div>
+                </div>
                 <a href="contact.html" class="nav-link" style="color: hsl(var(--primary));">Contact</a>
             </nav>
 
@@ -96,7 +104,9 @@
             <nav class="flex flex-col gap-4">
                 <a href="index.html" class="btn btn-outline" style="width: 100%;">Home</a>
                 <a href="about.html" class="btn btn-outline" style="width: 100%;">About</a>
+                <p class="mobile-nav-section-label">Products</p>
                 <a href="constellation.html" class="btn btn-outline" style="width: 100%;">Constellation</a>
+                <a href="readysetgo.html" class="btn btn-outline" style="width: 100%;">ReadySetGo</a>
                 <a href="contact.html" class="btn btn-outline"
                     style="width: 100%; color: hsl(var(--primary));">Contact</a>
             </nav>
@@ -143,7 +153,7 @@
                         <h3 style="margin-bottom: 1rem;">Let's Fix Your Friction</h3>
                         <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Tell us what's slowing you down.</p>
 
-                        <form id="contact-form">
+                        <form id="contact-form" data-source="contact">
                             <div class="form-group grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
                                 <div>
                                     <label class="label" for="name">Full Name *</label>
@@ -181,11 +191,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="label">Contact Info (Enter at least one)</label>
+                                <label class="label">Contact Info *</label>
                                 <div class="grid" style="gap: 0.5rem;">
-                                    <input class="input" type="email" id="email" name="Email"
+                                    <input class="input" type="email" id="email" name="Email" required
                                         placeholder="Email Address">
-                                    <input class="input" type="tel" id="phone" name="Phone" placeholder="Phone Number">
+                                    <input class="input" type="tel" id="phone" name="Phone" required
+                                        placeholder="Phone Number">
                                 </div>
                             </div>
 
@@ -215,12 +226,10 @@
 
     <footer style="background-color: hsl(var(--muted)); padding: 4rem 0;">
         <div class="container text-center">
-            <div class="flex items-center justify-center gap-2"
-                style="margin-bottom: 1.5rem; color: hsl(var(--muted-foreground));">
-                <i data-lucide="brain-circuit"></i>
+            <div style="margin-bottom: 1.5rem; color: hsl(var(--muted-foreground));">
                 <span style="font-weight: 700;">MindWorx</span>
             </div>
-            <p>&copy; 2026 MindWorx. Dream It. Build It. Automate It.</p>
+            <p>&copy; 2026 MindWorx. Practical. Honest. Grounded.</p>
         </div>
     </footer>
 
