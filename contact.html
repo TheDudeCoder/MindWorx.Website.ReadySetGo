@@ -78,7 +78,6 @@
             <nav class="hidden" id="desktop-nav"
                 style="display: flex; gap: 2rem; align-items: center; position: absolute; left: 50%; transform: translateX(-50%);">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
                 <div class="nav-dropdown">
                     <a href="#" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
                         Products
@@ -89,6 +88,7 @@
                         <a href="readysetgo.html" role="menuitem">ReadySetGo</a>
                     </div>
                 </div>
+                <a href="about.html" class="nav-link">About</a>
                 <a href="contact.html" class="nav-link" style="color: hsl(var(--primary));">Contact</a>
             </nav>
 
@@ -103,10 +103,10 @@
             style="border-top: 1px solid hsl(var(--border)); background: hsl(var(--background)); padding: 1rem;">
             <nav class="flex flex-col gap-4">
                 <a href="index.html" class="btn btn-outline" style="width: 100%;">Home</a>
-                <a href="about.html" class="btn btn-outline" style="width: 100%;">About</a>
                 <p class="mobile-nav-section-label">Products</p>
                 <a href="constellation.html" class="btn btn-outline" style="width: 100%;">Constellation</a>
                 <a href="readysetgo.html" class="btn btn-outline" style="width: 100%;">ReadySetGo</a>
+                <a href="about.html" class="btn btn-outline" style="width: 100%;">About</a>
                 <a href="contact.html" class="btn btn-outline"
                     style="width: 100%; color: hsl(var(--primary));">Contact</a>
             </nav>
@@ -199,18 +199,6 @@
                                         placeholder="Phone Number">
                                 </div>
                             </div>
-
-                            <!-- Urgent checkbox (appears when phone number is entered) -->
-                            <div id="urgent-container" class="hidden"
-                                style="margin-top: 0.25rem; padding: 0.6rem 0.75rem; border-radius: 8px; border: 1px solid hsl(var(--primary) / 0.3); background: hsl(var(--primary) / 0.05);">
-                                <label for="urgent"
-                                    style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.85rem; color: hsl(var(--foreground));">
-                                    <input type="checkbox" id="urgent" name="Urgent"
-                                        style="accent-color: hsl(var(--primary)); width: 16px; height: 16px; cursor: pointer;">
-                                    <span><strong>Want a demonstration now?</strong> I'll call you right back.</span>
-                                </label>
-                            </div>
-
 
                             <button type="submit" id="submit-btn" class="btn btn-primary"
                                 style="width: 100%; margin-top: 1rem;">Schedule Consultation</button>

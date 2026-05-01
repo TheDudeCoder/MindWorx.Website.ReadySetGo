@@ -6,7 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     setupMobileNav();
     setupContactForm();
-    setupUrgentToggle();
+    setupPhoneFormatter();
 });
 
 // --- Mobile Navigation ---
@@ -68,7 +68,6 @@ function setupContactForm() {
             Phone: phoneDigits,
             Zip: (data.Zip || '').trim(),
             Subject: (data.Subject || '').trim(),
-            Urgent: data.Urgent !== undefined,
             source: form.dataset.source || 'unknown',
         };
 
@@ -90,8 +89,6 @@ function setupContactForm() {
                     formStatus.className = 'form-status success';
                 }
                 form.reset();
-                const urgentContainer = document.getElementById('urgent-container');
-                if (urgentContainer) urgentContainer.classList.add('hidden');
             } else {
                 throw new Error(`API request failed (${response.status})`);
             }
@@ -113,39 +110,13 @@ function showError(formStatus, message) {
     formStatus.className = 'form-status error';
 }
 
-// --- Dynamic UX Logic ---
-function setupUrgentToggle() {
+// --- Phone number input formatter ---
+function setupPhoneFormatter() {
     const phoneInput = document.getElementById('phone');
-    const urgentContainer = document.getElementById('urgent-container');
+    if (!phoneInput) return;
 
-    if (phoneInput) {
-        // Format phone number as user types
-        phoneInput.addEventListener('input', (e) => {
-            const x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-
-            if (!urgentContainer) return;
-
-            const rawNumbers = e.target.value.replace(/\D/g, '');
-            if (rawNumbers.length >= 10) {
-                urgentContainer.classList.remove('hidden');
-                urgentContainer.classList.add('fade-in');
-            } else {
-                urgentContainer.classList.add('hidden');
-                urgentContainer.classList.remove('fade-in');
-
-                const checkbox = document.getElementById('urgent');
-                if (checkbox) checkbox.checked = false;
-            }
-        });
-
-        const checkbox = document.getElementById('urgent');
-        const submitBtn = document.getElementById('submit-btn');
-        if (checkbox && submitBtn) {
-            const originalText = submitBtn.textContent;
-            checkbox.addEventListener('change', (e) => {
-                submitBtn.textContent = e.target.checked ? 'Get Live Demonstration' : originalText;
-            });
-        }
-    }
+    phoneInput.addEventListener('input', (e) => {
+        const x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
 }
