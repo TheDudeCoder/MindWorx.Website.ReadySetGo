@@ -156,6 +156,99 @@
             margin-top: 0.25rem;
         }
 
+        /* ===== Trust Marquee ===== */
+        .trust-banner {
+            padding: 1.25rem 0 2rem;
+            border-top: 1px solid hsl(var(--border));
+            border-bottom: 1px solid hsl(var(--border));
+            background: hsl(var(--background));
+        }
+
+        .trust-banner-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .trust-marquee {
+            position: relative;
+            overflow: hidden;
+            /* Wider, softer fade on each side so logos drift in/out instead of popping at the edges */
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%);
+        }
+
+        .trust-track {
+            display: flex;
+            align-items: center;
+            width: max-content;
+            animation: trust-scroll 40s linear infinite;
+            will-change: transform;
+        }
+
+        .trust-marquee:hover .trust-track {
+            animation-play-state: paused;
+        }
+
+        .trust-logo {
+            height: 34px;
+            width: auto;
+            flex-shrink: 0;
+            /* Symmetric spacing via margin (not flex gap) so the loop wraps seamlessly */
+            margin-right: 4rem;
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
+        }
+
+        .trust-logo:hover {
+            opacity: 0.95;
+        }
+
+        /* Brands whose SVG is naturally black/dark — render white for dark theme */
+        .trust-logo--white {
+            filter: brightness(0) invert(1);
+            opacity: 0.35;
+        }
+
+        .trust-logo--white:hover {
+            opacity: 0.85;
+        }
+
+        /* Mask-based brand-color tint for brands without full-color SVGs */
+        .trust-logo--mask {
+            display: block;
+            height: 34px;
+            width: 84px;
+            -webkit-mask-position: center;
+            mask-position: center;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+        }
+
+        .trust-logo--n8n {
+            background-color: #EA4B71;
+            -webkit-mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/n8n.svg');
+            mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/n8n.svg');
+        }
+
+        .trust-logo--hostinger {
+            background-color: #673DE6;
+            -webkit-mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/hostinger.svg');
+            mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/hostinger.svg');
+        }
+
+        @keyframes trust-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-33.3333%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .trust-track {
+                animation: none;
+            }
+        }
+
         /* Process cards */
         .process-grid {
             display: grid;
@@ -438,6 +531,42 @@
                         <img src="assets/Hero1.png"
                             alt="Small business owner ready for the next job, with the busywork already handled.">
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trusted By & Featured In -->
+        <section class="trust-banner">
+            <div class="container trust-banner-header">
+                <p class="section-title">Trusted By &amp; Featured In</p>
+            </div>
+            <div class="trust-marquee" aria-label="Trusted by and featured in">
+                <div class="trust-track">
+                    <img class="trust-logo" src="https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/microsoft.svg" alt="Microsoft">
+                    <img class="trust-logo" src="https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/google.svg" alt="Google">
+                    <span class="trust-logo trust-logo--mask trust-logo--n8n" role="img" aria-label="n8n"></span>
+                    <img class="trust-logo trust-logo--white" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" alt="GitHub">
+                    <span class="trust-logo trust-logo--mask trust-logo--hostinger" role="img" aria-label="Hostinger"></span>
+                    <img class="trust-logo trust-logo--white" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vercel.svg" alt="Vercel">
+                    <img class="trust-logo trust-logo--white" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/railway.svg" alt="Railway">
+                    <img class="trust-logo" src="https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/sentry.svg" alt="Sentry">
+                    <!-- Duplicate sets for seamless infinite scroll on wide viewports -->
+                    <img class="trust-logo" src="https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/microsoft.svg" alt="" aria-hidden="true">
+                    <img class="trust-logo" src="https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/google.svg" alt="" aria-hidden="true">
+                    <span class="trust-logo trust-logo--mask trust-logo--n8n" aria-hidden="true"></span>
+                    <img class="trust-logo trust-logo--white" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" alt="" aria-hidden="true">
+                    <span class="trust-logo trust-logo--mask trust-logo--hostinger" aria-hidden="true"></span>
+                    <img class="trust-logo trust-logo--white" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vercel.svg" alt="" aria-hidden="true">
+                    <img class="trust-logo trust-logo--white" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/railway.svg" alt="" aria-hidden="true">
+                    <img class="trust-logo" src="https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/sentry.svg" alt="" aria-hidden="true">
+                    <img class="trust-logo" src="https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/microsoft.svg" alt="" aria-hidden="true">
+                    <img class="trust-logo" src="https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/google.svg" alt="" aria-hidden="true">
+                    <span class="trust-logo trust-logo--mask trust-logo--n8n" aria-hidden="true"></span>
+                    <img class="trust-logo trust-logo--white" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" alt="" aria-hidden="true">
+                    <span class="trust-logo trust-logo--mask trust-logo--hostinger" aria-hidden="true"></span>
+                    <img class="trust-logo trust-logo--white" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vercel.svg" alt="" aria-hidden="true">
+                    <img class="trust-logo trust-logo--white" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/railway.svg" alt="" aria-hidden="true">
+                    <img class="trust-logo" src="https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/sentry.svg" alt="" aria-hidden="true">
                 </div>
             </div>
         </section>
