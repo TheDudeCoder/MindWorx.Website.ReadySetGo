@@ -296,8 +296,8 @@ button { font-family: inherit; cursor: pointer; }
 .hero__title {
   font-family: var(--display);
   font-weight: 300;
-  font-size: clamp(48px, 7.2vw, 104px);
-  line-height: 0.96;
+  font-size: clamp(44px, 5.8vw, 84px);
+  line-height: 0.98;
   letter-spacing: -0.035em;
   color: var(--ink-0);
   margin: 0 0 28px;
@@ -541,7 +541,7 @@ button { font-family: inherit; cursor: pointer; }
 /* ───────────── SECTION ───────────── */
 section { position: relative; z-index: 1; }
 .section {
-  padding: 140px 0;
+  padding: 100px 0;
   position: relative;
 }
 .section__head {
@@ -818,7 +818,7 @@ section { position: relative; z-index: 1; }
 
 /* ───────────── FINAL CTA ───────────── */
 .final {
-  padding: 140px 0 120px;
+  padding: 100px 0;
   position: relative;
   text-align: center;
 }
@@ -931,7 +931,6 @@ section { position: relative; z-index: 1; }
 /* ───────────── RESPONSIVE ───────────── */
 @media (max-width: 1180px) {
   .hero__content { gap: 48px; }
-  .section { padding: 110px 0; }
 }
 @media (max-width: 1080px) {
   .nav { padding: 12px 20px; }

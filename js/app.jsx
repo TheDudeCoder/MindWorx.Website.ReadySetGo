@@ -288,7 +288,7 @@ const ProductVisualB = () => (
 );
 
 const Products = () => (
-  <section className="section" id="products" style={{ paddingTop: 60 }}>
+  <section className="section" id="products">
     <div className="container">
       <div className="section__head section__head--centered reveal">
         <div className="eyebrow">What We Build</div>
