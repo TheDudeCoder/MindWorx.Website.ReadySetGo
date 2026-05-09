@@ -27,10 +27,13 @@ const NavShared = ({ current }) => {
   React.useEffect(() => {
     if (!open) return;
     const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
+    const onResize = () => { if (window.innerWidth > 980) setOpen(false); };
     document.addEventListener('keydown', onKey);
+    window.addEventListener('resize', onResize);
     document.body.style.overflow = 'hidden';
     return () => {
       document.removeEventListener('keydown', onKey);
+      window.removeEventListener('resize', onResize);
       document.body.style.overflow = '';
     };
   }, [open]);

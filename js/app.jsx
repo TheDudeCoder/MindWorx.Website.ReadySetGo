@@ -154,11 +154,10 @@ const Logos = () => {
   const L = (file) => `assets/logos/${file}`;
   const items = [
     { name: 'OpenAI / ChatGPT', src: L('openai.svg'),     mono: true },
-    { name: 'Claude',           src: L('claude.svg'),     mono: true },
-    { name: 'Perplexity',       src: L('perplexity.svg'), mono: true },
+    { name: 'Claude',           src: L('claude.svg') },
+    { name: 'Perplexity',       src: L('perplexity.svg') },
     { name: 'Grok',             src: L('grok.svg'),       mono: true },
     { name: 'n8n',              src: L('n8n.svg') },
-    { name: 'Zapier',           src: L('zapier.svg') },
     { name: 'Hostinger',        src: L('hostinger.svg') },
     { name: 'GitHub',           src: L('github.svg'),     mono: true },
     { name: 'Vercel',           src: L('vercel.svg'),     mono: true },
@@ -342,8 +341,7 @@ const FinalCTA = () => (
           Every engagement starts with a real conversation about your business, not a pitch deck. Tell us what's slowing you down, and we'll show you where AI can actually help.
         </p>
         <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', gap: 14, flexWrap: 'wrap' }}>
-          <a className="btn btn--primary" href="contact.html">Get in Touch <ArrowRightShared className="btn__arrow" /></a>
-          <a className="btn" href="contact.html">Book a 15-min Call</a>
+          <a className="btn" href="contact.html" style={{minWidth: 240, justifyContent: 'center'}}>Let's Connect</a>
         </div>
         <div className="final__phone">Or call us at <strong>(678) 866-0977</strong></div>
       </div>
