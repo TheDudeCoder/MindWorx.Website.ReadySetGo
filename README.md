@@ -30,18 +30,33 @@ or any plain static server will return 404 for the form submission.
 
 ## Project layout
 
+The site is rendered with React + Babel-on-the-fly via CDN. Each HTML page
+loads `js/shared.jsx` (nav, footer, hooks) plus its page-specific bundle. No
+build step required.
+
 ```
 api/
-  submit.js        # POST handler that sends contact form to Resend
-assets/            # images
-css/style.css      # site-wide styles
-docs/              # internal docs (SCAN framework, copy archive, etc.)
-js/app.js          # form submission + mobile nav
+  submit.js          # POST handler that sends contact form to Resend
+assets/
+  logos/             # third-party logo SVGs (homepage logo strip)
+  readysetgo-agent.png       # homepage Products card image
+  readysetgo-agent-hero.jpg  # ReadySetGo page hero image
+css/
+  style.css          # site-wide styles (was design/site-export/styles.css)
+  subpages.css      # subpage-specific styles
+docs/                # internal docs (SCAN framework, copy archive, etc.)
+js/
+  shared.jsx        # NavShared, FooterShared, hooks; loaded on every page
+  app.jsx           # homepage
+  about.jsx
+  constellation.jsx
+  readysetgo.jsx
+  contact.jsx       # contact form (POSTs to /api/submit)
+index.html          # home
 about.html
-aboutus.html
-constellation.html # product page (Constellation)
-contact.html       # contact form
-index.html         # home
+constellation.html  # product page (Constellation)
+readysetgo.html     # product page (ReadySetGo)
+contact.html        # contact form
 ```
 
 ## Contact form contract
@@ -55,10 +70,9 @@ All forms post a flat JSON payload to `/api/submit`:
   "Phone":    "5551234567",
   "Zip":      "30303",
   "Subject":  "Missing calls when things get busy or after hours",
-  "source":   "index"
+  "source":   "contact"
 }
 ```
 
-`FullName`, `Email`, and `Phone` (10+ digits) are all required. `source` is
-read from the form's `data-source` attribute and identifies which page the
-submission came from.
+`FullName`, `Email`, and `Phone` (10+ digits) are all required. `source`
+identifies which page the submission came from.
