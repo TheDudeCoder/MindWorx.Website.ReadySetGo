@@ -259,78 +259,6 @@ const Phases = () => (
   </section>
 );
 
-const ProductVisualA = () => (
-  <svg className="product__visual" viewBox="-100 -100 200 200" aria-hidden="true">
-    <g fill="none" stroke="#189cff" strokeWidth="0.6">
-      <circle r="70" />
-      <circle r="50" />
-      <circle r="30" />
-    </g>
-    {[
-      [0, -70], [60, -36], [60, 36], [0, 70], [-60, 36], [-60, -36],
-      [40, 0], [-40, 0], [0, -40], [0, 40], [25, -25], [-25, 25],
-    ].map(([x, y], i) => (
-      <circle key={i} cx={x} cy={y} r="2.4" fill="#189cff" />
-    ))}
-    <g stroke="#189cff" strokeWidth="0.4" opacity="0.5">
-      <line x1="0" y1="-70" x2="60" y2="-36" />
-      <line x1="60" y1="-36" x2="60" y2="36" />
-      <line x1="60" y1="36" x2="0" y2="70" />
-      <line x1="0" y1="70" x2="-60" y2="36" />
-      <line x1="-60" y1="36" x2="-60" y2="-36" />
-      <line x1="-60" y1="-36" x2="0" y2="-70" />
-    </g>
-  </svg>
-);
-
-const ProductVisualB = () => (
-  <img className="product__visual product__visual--photo" src="assets/readysetgo-agent.png" alt="" aria-hidden="true" />
-);
-
-const Products = () => (
-  <section className="section" id="products">
-    <div className="container">
-      <div className="section__head section__head--centered reveal">
-        <div className="eyebrow">What We Build</div>
-        <div>
-          <h2 className="section__title">Products that put our<br /><em>process</em> to work.</h2>
-          <p className="section__sub" style={{ marginTop: 22 }}>
-            Some of our consulting work has matured into productized solutions you can adopt directly.
-          </p>
-        </div>
-      </div>
-      <div className="products">
-        <article className="product reveal hover-glow">
-          <ProductVisualA />
-          <div className="product__tag">— Constellation</div>
-          <h3 className="product__name">Connected clarity for fragmented projects.</h3>
-          <p className="product__lede">From scattered to structured.</p>
-          <p className="product__body">
-            Constellation gathers the scattered knowledge of your project — specs, Slack threads, tickets, repos, meeting notes — and reveals the shape they form together. Turn fragmented knowledge into connected clarity.
-          </p>
-          <div className="product__foot">
-            <a href="constellation.html">Learn more <ArrowRightShared style={{ width: 14, height: 14 }} /></a>
-            <span className="product__foot__meta">For product &amp; eng teams</span>
-          </div>
-        </article>
-        <article className="product reveal hover-glow">
-          <ProductVisualB />
-          <div className="product__tag">— ReadySetGo</div>
-          <h3 className="product__name">AI booking assistant for service businesses.</h3>
-          <p className="product__lede">Less phone tag, more booked appointments.</p>
-          <p className="product__body">
-            ReadySetGo follows up with leads, answers booking calls, checks your live calendar, schedules appointments, and sends personalized confirmations — automatically.
-          </p>
-          <div className="product__foot">
-            <a href="readysetgo.html">Learn more <ArrowRightShared style={{ width: 14, height: 14 }} /></a>
-            <span className="product__foot__meta">For service businesses</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-);
-
 const FinalCTA = () => (
   <section className="final" id="contact">
     <div className="container">
@@ -359,8 +287,6 @@ const App = () => {
       <Logos />
       <DividerShared />
       <Phases />
-      <DividerShared />
-      <Products />
       <DividerShared />
       <FinalCTA />
       <FooterShared />

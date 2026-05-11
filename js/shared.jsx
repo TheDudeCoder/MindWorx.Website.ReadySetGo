@@ -15,11 +15,10 @@ const LogoShared = ({ size = 26 }) => (
 );
 
 const NAV_LINKS = [
-  ['home',          'Home',          'index.html'],
-  ['readysetgo',    'ReadySetGo',    'readysetgo.html'],
-  ['constellation', 'Constellation', 'constellation.html'],
-  ['about',         'About',         'about.html'],
-  ['contact',       'Contact',       'contact.html'],
+  ['home',      'Home',      'index.html'],
+  ['solutions', 'Solutions', 'solutions.html'],
+  ['about',     'About',     'about.html'],
+  ['contact',   'Contact',   'contact.html'],
 ];
 
 const NavShared = ({ current }) => {
@@ -78,8 +77,7 @@ const FooterShared = () => (
     <div className="container footer__row">
       <div className="footer__brand"><LogoShared size={22} /> MindWorx</div>
       <div className="footer__links">
-        <a href="constellation.html">Constellation</a>
-        <a href="readysetgo.html">ReadySetGo</a>
+        <a href="solutions.html">Solutions</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>
